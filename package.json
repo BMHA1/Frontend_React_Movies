@@ -1,0 +1,22 @@
+{
+  "name": "frontend_react_movies",
+  "version": "1.0.0",
+  "description": "Primer Proyecto con React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMHA1/Frontend_React_Movies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BMHA1/Frontend_React_Movies/issues"
+  },
+  "homepage": "https://github.com/BMHA1/Frontend_React_Movies#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

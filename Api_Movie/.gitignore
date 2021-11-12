@@ -1,7 +1,3 @@
-#Ignoramos los paquetes.
-packaqe-lock.json
-package.json
-
 # Ignoramos la carpeta con los módulso de Node.js.
 node_modules
 

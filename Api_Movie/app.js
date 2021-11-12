@@ -1,19 +1,22 @@
-const { Router } = require('express');
+require('dotenv').config();
+
 const express = require ('express');
+
+// const jwt = require('jsonwebtoken');
+const routingMovie = require('./components/movie/router.js');
+const routingUser = require('./components/user/router.js');
+const connection = require('./connection.js');
+
+connection();
+
 const app = express();
-const jwt = require('jsonwebtoken');
-const routingMovie = require('./components/movie/router.js')
-const routingUser = require('./components/user/router.js')
-const connection = require('./connection.js')
 
-connection()
+app.use(express.json());
 
-app.use(express.json())
+app.use('/api/movie/', routingMovie); //@BMHA1 PODRIAMOS DEJAR EL EMDPOINT SIN API PERO COMO VEAIS
+app.use('/api/user/', routingUser);
 
-app.use('/api/movie/', routingMovie)
-app.use('/api/user/', routingUser)
-
-app.listen(3000, () => console.log('Servidor levantado en 3000.'))
+app.listen(process.env.PORT, () => console.log('Servidor levantado en', process.env.PORT));
 
 
 // const token = jwt.sign({foo: 'bar'}, 'aswdfghjuko+854lokijhgfds');
