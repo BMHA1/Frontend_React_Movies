@@ -18,6 +18,7 @@ module.exports.createUser = async (req, res) => {
         const user = new User(data);
         /**
          * aqui vendria el helper para hashear la contraseña no se como lo queris hacer
+         * 
          */
         try {
             await user.save();
