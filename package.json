@@ -13,10 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BMHA1/Frontend_React_Movies/issues"
-  },
-  "homepage": "https://github.com/BMHA1/Frontend_React_Movies#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
