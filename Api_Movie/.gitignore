@@ -1,5 +1,0 @@
-# Ignoramos la carpeta con los módulso de Node.js.
-node_modules
-
-# Ignoramos el archivo .env para darle las variables del entorno.
-.env
