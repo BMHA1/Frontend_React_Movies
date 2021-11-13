@@ -5,22 +5,24 @@ const jwt = require('jsonwebtoken');
 // Método para crear un usuario.
 
 module.exports.createUser = async (req, res) => {
-    /**
-     * aqui podemos poner la validacion junto con el hasheo de la contraseña
-     * o crear un uno helpper para ello como vosotros veais
-     */
+    
     if (!req.body.password) {
         res.json({
             message: 'password is required'
         }, 400);
     } else {
         let data = req.body
-        /**
-         * aqui vendria el helper para hashear la contraseña no se como lo queris hacer
-         * data.password=hash 
-         */
+        
+        if (!req.token || req.token.role == 'user') {
+            delete data.role;
+        }
 
-        const user = new User(data);
+        const user = new User(req.body);
+
+        const salt = bcrypt.genSaltSync(15);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+        user.password = hash;
+
         try {
             await user.save();
             res.json(user);
@@ -44,7 +46,9 @@ module.exports.createUser = async (req, res) => {
 module.exports.getUserCollection = async (req, res) => {
     try {
         if (req.query.name) {
-            const users = await User.find({ name: { $regex: new RegExp(req.query.name, 'i') } });
+            const users = await User.find({ 
+                name: { $regex: new RegExp(req.query.name, 'i') }
+            });
             res.json({
                 user: users
             });
@@ -55,9 +59,15 @@ module.exports.getUserCollection = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.json({
-            message: error.message
-        }, 500);
+        if (error.message == "ValidationError") {
+            res.json({
+                message: error.message
+            }, 400);
+        } else {
+            res.json({
+                message: error.message
+            }, 500);
+        }
     }
 }
 
@@ -65,9 +75,10 @@ module.exports.getUserCollection = async (req, res) => {
 
 module.exports.getUserByKey = async (req, res) => {
     const query = {};
-        if(req.query.name)query.name = req.query.name;
-        if(req.query.surname)query.surname = req.query.surname;
-        if(req.query.mail)query.mail = req.query.mail;
+
+    if(req.query.name)query.name = { $regex: new RegExp(req.query.name, 'i') };
+    if(req.query.surname)query.surname = { $regex: new RegExp(req.query.surname, 'i') };
+    if(req.query.mail)query.mail ={ $regex: new RegExp(req.query.email, 'i')};
     
     try {
         const user = await User.find(query);
@@ -84,7 +95,7 @@ module.exports.getUserByKey = async (req, res) => {
             }, 500);
         }
     }
-    }
+}
 
 // Método para buscar un usuario por ID.
 
@@ -103,14 +114,9 @@ module.exports.getUserById = async (req, res) => {
         res.json({
             message: error.message
         }, 500);
-    }
-    
-    
-    
+    }    
 }
 
-// LOGIN: Buscar el usuario por ID, comparar TOKEN y devolver si es incorrecto.
-// const login = (req, res) => {const data = await User.find({})}
 /**esta es mi idea para el login */
 module.exports.loginUser = async(req, res) => {
     if (!req.body.email || !req.body.password) {
@@ -147,14 +153,13 @@ module.exports.loginUser = async(req, res) => {
             }
         }
     }
-}
+};
 
 module.exports.deleteUser = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (user) {
             const userDelete = await User.findByIdAndDelete(user);
-            // const userDelete = await User.findByIdAndDelete({_id: req.params.id});
             res.json({
                 message: 'user deleted'
             });
@@ -169,7 +174,7 @@ module.exports.deleteUser = async (req, res) => {
             message: error.message
         }, 500);
     }
-}
+};
 
 module.exports.modifyUser = async (req, res) => {
     try {
@@ -206,4 +211,4 @@ module.exports.modifyUser = async (req, res) => {
             }, 500);
         }
     }    
-}
+};
