@@ -15,10 +15,12 @@ module.exports.createUser = async (req, res) => {
         }, 400);
     } else {
         let data = req.body
-        const user = new User(data);
         /**
          * aqui vendria el helper para hashear la contraseña no se como lo queris hacer
+         * data.password=hash 
          */
+
+        const user = new User(data);
         try {
             await user.save();
             res.json(user);
@@ -57,11 +59,6 @@ module.exports.getUserCollection = async (req, res) => {
             message: error.message
         }, 500);
     }
-    /**
-     * esto es lo que hizo guille arriba he puesto mas o menos lo uqe he hecho yo no se que queris usar
-     * const user = await User.find({});
-     * res.json(user);
-     */
 }
 
 // Método para buscar a través de uno de los valores del documento Users.
@@ -107,11 +104,7 @@ module.exports.getUserById = async (req, res) => {
             message: error.message
         }, 500);
     }
-    /**
-     * aqui Guille usa find en vez de findById yo voto de usar lo de arriba pero sino metemos lo de el y listo 
-     * const user = await User.find({_id: req.params.id});
-     * res.json(user);
-     */
+    
     
     
 }
@@ -212,13 +205,5 @@ module.exports.modifyUser = async (req, res) => {
                 message: error.message
             }, 500);
         }
-    }
-
-    /**
-     * 
-     * const user = await User.findByIdAndUpdate({_id: req.params.id}, req.body);
-     * res.json({user : User})
-     */
-    
-    
+    }    
 }
