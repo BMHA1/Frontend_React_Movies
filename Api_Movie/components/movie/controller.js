@@ -26,7 +26,6 @@ module.exports.createMovie = async (req, res) => {
 
 module.exports.getMovieByKey = async (req, res) => {
 
-
     let query  = {};
     if (req.query.title) {
         query.title = { $regex: new RegExp(req.query.title, 'i') };
@@ -44,7 +43,6 @@ module.exports.getMovieByKey = async (req, res) => {
     
     if (req.query.actors) {
         query.year = { $regex: new RegExp(req.query.year, 'i') };
-
     }
     try {
         const movies = await Movie.find(query);
