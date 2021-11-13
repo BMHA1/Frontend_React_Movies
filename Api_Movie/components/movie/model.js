@@ -7,6 +7,7 @@ const MovieSchema = new mongoose.Schema({
     duration: { type: Number },
     parental: { type: Number },
     year: { type: Number },
+    price:{ type: Number }
 })
 
 module.exports = mongoose.model('Movie', MovieSchema)

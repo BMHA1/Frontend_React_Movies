@@ -1,12 +1,11 @@
-require('dotenv').config();
-
 const express = require ('express');
-
-// const jwt = require('jsonwebtoken');
 const routingRental= require('./components/rentals/router')
 const routingMovie = require('./components/movie/router.js');
 const routingUser = require('./components/user/router.js');
 const connection = require('./connection.js');
+require('dotenv').config();
+
+
 
 connection();
 
@@ -19,6 +18,3 @@ app.use('/user', routingUser);
 
 app.listen(process.env.PORT, () => console.log('Servidor levantado en', process.env.PORT));
 
-
-// const token = jwt.sign({foo: 'bar'}, 'aswdfghjuko+854lokijhgfds');
-// console.log(token)
