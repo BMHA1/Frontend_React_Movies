@@ -16,14 +16,13 @@ module.exports.createUser = async (req, res) => {
         if (!req.token || req.token.role == 'user') {
             delete data.role;
         }
-
-        const user = new User(req.body);
+        
+        const user = new User(data);
 
         const salt = bcrypt.genSaltSync(15);
         const hash = bcrypt.hashSync(req.body.password, salt);
         user.password = hash;
 
-        const user = new User(data);
         try {
             await user.save();
             res.json(user);

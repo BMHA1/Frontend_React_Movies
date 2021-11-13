@@ -1,7 +1,7 @@
 const router = require ('express').Router();
 
 const controller = require ('./controller.js');
-// const auth = require('aqui poner la autentificación');
+const auth = require('../../auth');
 
 router.post('/', controller.createUser);
 router.get('/:id', controller.getUserById);

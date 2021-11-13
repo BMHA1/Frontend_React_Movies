@@ -1,7 +1,7 @@
 const router = require ('express').Router();
 
 const controller = require ('./controller.js');
-// const auth = require('../auth.js');
+const auth = require('../../auth');
 
 router.post('/', controller.createMovie);
 router.get('/:id', controller.getMovieById);
