@@ -5,19 +5,41 @@ const moment = require('moment');
 // Método para crear un pedido
 
 module.exports.createRental = async (req, res) => {
-    const user = req.token._id ;
-    const rentalData = req.body; //peliculas
-    const rentalDay = moment() ;
-    const expirationDate = rentalDay.clone().add(8, "days");
+    const userId = req.token._id ;
+    const rentalData = req.body; //peliculasId
+    const rentalDate = moment() ;
+    const expirationDate = rentalDate.clone().add(8, "days");
+    const precioSuma = 0 ;
+//recorro array rentaldata de ahi cojo el precio de cada una peliculas buscadas hacemos un reduce del precio de cada pelicula
 
-    const newRental = new Rental({
-        userId: user,
-        moviesID: rentalData,
-        rentalData: rentalDay,
-        expirationDate: expirationDate
-    });
+    try {
 
-}
+        for (let i = 0; i < rentalData.length; i++) {
+            const element = rentalData[i];
+            const cadaPelicula = await Movie.findById(element);
+            for (let o = 0; o < rentalData.length; o++) {
+                const busquedaIgual = rentalDatal[o];
+                if (busquedaIgual == element) {
+                    res.status(404).json({message:'a movie is duplicate'})
+                }
+                
+            }
+            precioSuma += cadaPelicula.precio
+        }
+        const newRental = new Rental({
+            userId: userId,
+            moviesID: rentalData,
+            totalPrice: precioSuma, 
+            rentalDate: rentalDate,
+            expirationDate: expirationDate
+        });
+
+        await newRental.save();
+
+    } catch (error) {
+        
+    }
+};
 // module.exports.createRental = async (req, res) => {
 //     console.log(req.body)
 //     try {
