@@ -1,4 +1,6 @@
+require('dotenv').config();
 const express = require ('express');
+
 const routingRental= require('./components/rentals/router')
 const routingMovie = require('./components/movie/router.js');
 const routingUser = require('./components/user/router.js');
@@ -12,9 +14,9 @@ connection();
 const app = express();
 
 app.use(express.json());
-app.use('/user', routingUser);
-app.use('/rental', routingRental)
-app.use('/movie', routingMovie);
+app.use('/users', routingUser);
+app.use('/rentals', routingRental)
+app.use('/movies', routingMovie);
 
 
-app.listen(4000, () => console.log('Servidor levantado en', 4000));
+app.listen(process.env.PORT, () => console.log('Servidor levantado en', process.env.PORT));

@@ -5,13 +5,13 @@ const jwt = require('jsonwebtoken');
 // Método para crear un usuario.
 
 module.exports.createUser = async (req, res) => {
-   console.log(req.body)
     if (!req.body.password) {
         res.json({
             message: 'password is required'
         }, 400);
     } else {
         let data = req.body
+
         if (!req.token || req.token.role == 'user') {
             delete data.role;
         }
@@ -73,6 +73,7 @@ module.exports.getUserByKey = async (req, res) => {
     if (req.query.name) query.name = { $regex: new RegExp(req.query.name, 'i') };
     if (req.query.surname) query.surname = { $regex: new RegExp(req.query.surname, 'i') };
     if (req.query.mail) query.mail = { $regex: new RegExp(req.query.email, 'i') };
+    if (req.query.role) query.role = req.query.role;
 
     try {
         const user = await User.find(query);

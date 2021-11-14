@@ -1,13 +1,10 @@
 const router = require ('express').Router();
 const controller = require ('./controller');
-
+const auth = require('../../auth');
 
 
 router.post('/', controller.createRental);
-// router.get(('/:id'), controller.getMovieById);
-// router.get(('/'), controller.getMovieByKey);
-// router.get(('/'), controller.getMovieCollection);
-// router.put(('/:id'), controller.modifyMovie);
-// router.delete(('/:id'), controller.deleteMovie);
+router.get('/:id', controller.getRentalId);
+router.get('/', controller.getRentals);
 
 module.exports = router;

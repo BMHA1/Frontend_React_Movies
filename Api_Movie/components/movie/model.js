@@ -6,17 +6,17 @@ const MovieSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
-      },
+    },
     directors: [{
         type: String 
     }],
     genres: [{ 
         type: String
     }],
-     actors:[{
+    actors:[{
         type: String,
         required: true
-     }],
+    }],
     duration: {
         type: Number 
     },
@@ -26,7 +26,9 @@ const MovieSchema = new mongoose.Schema({
     year: {
         type: Number 
     },
-    price:{ type: Number }
-})
+    price:{
+        type: Number 
+    }
+});
 
 module.exports = mongoose.model('Movie', MovieSchema)
