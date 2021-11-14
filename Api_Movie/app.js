@@ -12,9 +12,9 @@ connection();
 const app = express();
 
 app.use(express.json());
-app.use('/rental', routingRental)
-app.use('/movie', routingMovie); //@BMHA1 PODRIAMOS DEJAR EL EMDPOINT SIN API PERO COMO VEAIS
 app.use('/user', routingUser);
+app.use('/rental', routingRental)
+app.use('/movie', routingMovie);
 
-app.listen(process.env.PORT, () => console.log('Servidor levantado en', process.env.PORT));
 
+app.listen(4000, () => console.log('Servidor levantado en', 4000));

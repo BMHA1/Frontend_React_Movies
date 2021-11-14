@@ -98,9 +98,7 @@ module.exports.deleteMovie = async (req, res) => {
         }, 500);
     }
 };
-
 // Método para modificar un valor de películas a través de una búsqueda por ID.
-
 module.exports.modifyMovie = async (req, res) => {
 
     try {
