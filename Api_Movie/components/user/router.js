@@ -3,6 +3,7 @@ const controller = require ('./controller.js');
 // const auth = require('aqui poner la autentificación');
 
 router.post('/', controller.createUser); // Crear usario, no necesita 
+router.post('/login', controller.loginUser); // Crear usario, no necesita 
 router.get('/:id', controller.getUserById); // buscar usario por id
 router.get('/', controller.getUserByKey); // buscar un usuario por un filtro en particular-solo (ADMIN)
 router.get('/', controller.getUserCollection);// buscar todos los usario (SOLO ADMIN) 
