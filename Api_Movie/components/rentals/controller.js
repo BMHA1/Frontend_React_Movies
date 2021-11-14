@@ -7,11 +7,11 @@ const moment = require('moment');
 module.exports.createRental = async (req, res) => {
     const user = req.token._id ;
     const rentalData = req.body; //peliculas
-    const rentalDay = moment() ;
+    const rentalDay = moment() 
     const expirationDate = rentalDay.clone().add(8, "days");
 
     const newRental = new Rental({
-        userId: user,
+        userId: user.populate("name"),
         moviesID: rentalData,
         rentalData: rentalDay,
         expirationDate: expirationDate
