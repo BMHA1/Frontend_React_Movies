@@ -3,3 +3,5 @@ node_modules
 
 # Ignoramos el archivo .env para darle las variables del entorno.
 .env
+package-lock.json
+package.json

@@ -1,19 +1,31 @@
 const mongoose = require('mongoose')
-// const User = mongoose.model('User', userSchema)
-// const Movie = mongoose.model('Movie', movieSchema)
 
 const RentalSchema = new mongoose.Schema({
-    idUser: {
-        // type: mongoose.Schema.type.ObjectID,
-        // ref: User
+    idUsuario: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        require: true
     },
     idMovie: [{
-        // type: mongoose.Schema.type.ObjectID,
-        // ref: Movie,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie",
+        require: true
     }],
-    totalPrice:[{type:Number}], // Es un array porque pùede elegir muchas peliculas 
-    rentalDate: { type: Number },
-    expirationDate: { type: Number },
+    totalPrice: [{ type: Number }], // "funcion que sume todos los precios de las peliculas seleccionada"
+    rentalDate: { type: Date },
+    expirationDate: { type: Date },
 })
 
+
+
+
+
+
+
+
+
+
+
 module.exports = mongoose.model('Rental', RentalSchema)
+// const User = mongoose.model('User', userSchema)
+// const Movie = mongoose.model('Movie', movieSchema)

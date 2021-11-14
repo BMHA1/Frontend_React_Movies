@@ -1,7 +1,9 @@
 const router = require ('express').Router();
 const controller = require ('./controller');
 
-// router.post(('/'), controller.createMovie);
+
+
+router.post('/', controller.createRental);
 // router.get(('/:id'), controller.getMovieById);
 // router.get(('/'), controller.getMovieByKey);
 // router.get(('/'), controller.getMovieCollection);
