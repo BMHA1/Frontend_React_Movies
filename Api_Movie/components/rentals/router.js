@@ -3,8 +3,8 @@ const controller = require ('./controller');
 const auth = require('../../auth');
 
 
-router.post('/', controller.createRental);
-router.get('/:id', controller.getRentalId);
-router.get('/', controller.getRentals);
+router.post('/',auth.checkUser, controller.createRental);
+router.get('/:id', auth.checkUser, controller.getRentalId);
+router.get('/', auth.checkUser, controller.getRentals);
 
 module.exports = router;

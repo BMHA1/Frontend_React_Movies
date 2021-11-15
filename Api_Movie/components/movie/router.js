@@ -4,11 +4,11 @@ const controller = require ('./controller.js');
 const auth = require('../../auth');
 
 
-router.post('/', controller.createMovie);
-router.get('/:id', controller.getMovieById);
-router.get('/', controller.getMovieByKey);
-router.put('/:id', controller.modifyMovie);
-router.delete('/:id', controller.deleteMovie);
+router.post('/',auth.checkAdminOrOwn, controller.createMovie);
+router.get('/:id', auth.checkUser, controller.getMovieById);
+router.get('/', auth.checkUser, controller.getMovieByKey);
+router.put('/:id', auth.checkAdminOrOwn, controller.modifyMovie);
+router.delete('/:id', auth.checkAdminOrOwn, controller.deleteMovie);
 
 
 module.exports = router;

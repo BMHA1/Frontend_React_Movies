@@ -7,30 +7,28 @@ const checkToken = (req, res, next, requiredRole) => {
         let splitToken = req.headers['authorization'].split(' ');
         if (splitToken.length === 2) {
             token = splitToken[1];
-            console.log(token);
+            
         }
     }
 
     if (token) {
-        let userToken = jwt.verify(token, process.env.PRIVATE_KEY);
         try {
-            console.log(userToken.role);
+            let userToken = jwt.verify(token, process.env.PRIVATE_KEY);
             if (requiredRole == 'user' ||
                 userToken.role == 'admin' ||
                 (req.path.startsWith('/users') && req.params.id == userToken._id) // perfil del propio usuario autenticado
             ) {
                 req.token = userToken;
-                console.log(userToken);
                 next();
 
             } else {
                 res.json({
-                    message: 'user not authorized'
+                    message: 'user not authorized que te peines 0'
                 }, 403);
             }
         } catch (error) {
             res.json({
-                message: 'user not authenticated que te peines'
+                message: 'user not authenticated que te peines 1'
             }, 401);
         }
     } else {

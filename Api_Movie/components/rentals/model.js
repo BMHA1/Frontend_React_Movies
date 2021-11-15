@@ -4,21 +4,24 @@ const RentalSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        require: true
+        required: true
     },
     movieId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Movie",
-        require: true
+        required: true
     }],
     totalPrice: [{
-        type: Number 
+        type: Number,
+        required: true 
     }], // "funcion que sume todos los precios de las peliculas seleccionada"
     rentalDate: { 
-        type: Date
+        type: Date,
+        required: true
     },
     expirationDate: {
-        type: Date
+        type: Date,
+        required: true
     },
 })
 

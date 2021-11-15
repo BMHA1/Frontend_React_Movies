@@ -10,7 +10,7 @@ module.exports.createUser = async (req, res) => {
             message: 'password is required'
         }, 400);
     } else {
-        let data = req.body
+        let data = req.body;
 
         if (!req.token || req.token.role == 'user') {
             delete data.role;
@@ -18,19 +18,18 @@ module.exports.createUser = async (req, res) => {
         
         const user = new User(data);
 
-        const user = new User(req.body);
         const salt = bcrypt.genSaltSync(8);
         const hash = bcrypt.hashSync(req.body.password, salt);
         user.password = hash;
-        console.log(user)
+
         try {
             await user.save();
             res.json(user);
         } catch (error) {
             if (error.message == 'ValidationError') {
-                res.status(400).json({message: error.message + 'algo pasa1' });
+                res.status(400).json({ message: error.message });
             } else {
-                res.status(500).json({message: error.message + 'algo pasa2'});
+                res.status(500).json({ message: error.message });
             }
 
         }
@@ -70,13 +69,16 @@ module.exports.getUserCollection = async (req, res) => {
 // Método para buscar a través de uno de los valores del documento Users.
 
 module.exports.getUserByKey = async (req, res) => {
-    const query = {};
+    let query = {};
 
     if (req.query.name) query.name = { $regex: new RegExp(req.query.name, 'i') };
     if (req.query.surname) query.surname = { $regex: new RegExp(req.query.surname, 'i') };
     if (req.query.mail) query.mail = { $regex: new RegExp(req.query.email, 'i') };
     if (req.query.role) query.role = req.query.role;
-
+    
+    if (req.token.role == 'user'){
+        query._id = req.token._id ;
+    }
     try {
         const user = await User.find(query);
         res.json(user);
@@ -97,8 +99,9 @@ module.exports.getUserByKey = async (req, res) => {
 // Método para buscar un usuario por ID.
 
 module.exports.getUserById = async (req, res) => {
+    const name = req.params.id ;
     try {
-        const movie = await User.findById(req.params.id)
+        const movie = await User.findById(name)
         if (movie) {
             res.json(movie);
         } else {
@@ -134,7 +137,7 @@ module.exports.loginUser = async (req, res) => {
                         _id: user._id,
                         role: user.role
                     }, process.env.PRIVATE_KEY, {
-                        expiresIn: '4h'
+                        expiresIn: '24h'
                     });
                     res.json(token);
                 } else {
