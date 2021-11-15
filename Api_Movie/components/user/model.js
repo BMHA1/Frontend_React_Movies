@@ -2,10 +2,10 @@ const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
     name: {
-        type: String 
+        type: String
     },
-    surname: { 
-        type: String 
+    surname: {
+        type: String
     },
     email: {
         type: String,
@@ -13,21 +13,16 @@ const UserSchema = new mongoose.Schema({
         lowercase: true,
         unique: true,
         required: true,
-        match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
+        match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i
+
     },
     password: {
         type: String
     },
     role: {
-        type: String, 
-        default: 'USER'
+        type: String
     },
-    favorites: [
-        {
-            type: String,
-            ref: 'Movie' 
-        }
-    ]
+
 })
 
 module.exports = mongoose.model('User', UserSchema)

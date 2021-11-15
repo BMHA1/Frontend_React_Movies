@@ -5,38 +5,34 @@ const jwt = require('jsonwebtoken');
 // Método para crear un usuario.
 
 module.exports.createUser = async (req, res) => {
-    
     if (!req.body.password) {
         res.json({
             message: 'password is required'
         }, 400);
     } else {
         let data = req.body
-        
+
         if (!req.token || req.token.role == 'user') {
             delete data.role;
         }
         
         const user = new User(data);
 
-        const salt = bcrypt.genSaltSync(6);
+        const user = new User(req.body);
+        const salt = bcrypt.genSaltSync(8);
         const hash = bcrypt.hashSync(req.body.password, salt);
         user.password = hash;
-
+        console.log(user)
         try {
             await user.save();
             res.json(user);
         } catch (error) {
             if (error.message == 'ValidationError') {
-                res.json({
-                    message: error.message
-                }, 400);
+                res.status(400).json({message: error.message + 'algo pasa1' });
             } else {
-                res.json({
-                    message: error.message
-                }, 500);
+                res.status(500).json({message: error.message + 'algo pasa2'});
             }
-            
+
         }
     }
 }
@@ -46,7 +42,7 @@ module.exports.createUser = async (req, res) => {
 module.exports.getUserCollection = async (req, res) => {
     try {
         if (req.query.name) {
-            const users = await User.find({ 
+            const users = await User.find({
                 name: { $regex: new RegExp(req.query.name, 'i') }
             });
             res.json({
@@ -76,10 +72,11 @@ module.exports.getUserCollection = async (req, res) => {
 module.exports.getUserByKey = async (req, res) => {
     const query = {};
 
-    if(req.query.name)query.name = { $regex: new RegExp(req.query.name, 'i') };
-    if(req.query.surname)query.surname = { $regex: new RegExp(req.query.surname, 'i') };
-    if(req.query.mail)query.mail ={ $regex: new RegExp(req.query.email, 'i')};
-    
+    if (req.query.name) query.name = { $regex: new RegExp(req.query.name, 'i') };
+    if (req.query.surname) query.surname = { $regex: new RegExp(req.query.surname, 'i') };
+    if (req.query.mail) query.mail = { $regex: new RegExp(req.query.email, 'i') };
+    if (req.query.role) query.role = req.query.role;
+
     try {
         const user = await User.find(query);
         res.json(user);
@@ -114,11 +111,11 @@ module.exports.getUserById = async (req, res) => {
         res.json({
             message: error.message
         }, 500);
-    }    
+    }
 }
 
 /**esta es mi idea para el login */
-module.exports.loginUser = async(req, res) => {
+module.exports.loginUser = async (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.json({
             message: "invalid user or password"
@@ -210,5 +207,5 @@ module.exports.modifyUser = async (req, res) => {
                 message: error.message
             }, 500);
         }
-    }    
+    }
 };

@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const MovieSchema = new mongoose.Schema({
+
     title: {
-        type: String
-    //si lo crea un admin siempre y pondria que sea required
+        type: String,
+        required: true
     },
     directors: [{
         type: String 

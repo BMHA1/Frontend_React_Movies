@@ -1,14 +1,16 @@
 {
-
-
-  "name": "api_movie",
+  "name": "Frontend_React_Movies",
   "version": "1.0.0",
   "description": "En este tercer reto técnico hemos de realizar un buscador de películas.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMHA1/Frontend_React_Movies.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
