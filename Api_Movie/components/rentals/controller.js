@@ -7,10 +7,9 @@ module.exports.createRental = async (req, res) => {
         const orderCreate = new Rental(req.body);
         await Rental.save();
         res.json({ order: orderCreate });
-
     } catch (e) {
         console.log(e)
-        res.status(400).send(`dont create order ${e}`)
+        res.status(400).send(`don't create order ${e}`)
     }
 }
 
@@ -25,12 +24,11 @@ module.exports.getMovieCollection = async (req, res) => {
         console.log(e)
         res.status(400).send(`dont create order ${e}`)
     }
-
 }
 
 // Método para buscar a través de uno de los valores del documento Movies.
 
-
+module.exports.getIvoiceValues = async (req, res)=>{};
 
 // Método para buscar película por ID.
 

@@ -37,12 +37,11 @@ module.exports.getMovieByKey = async (req, res) => {
     if (req.query.actors) {
         query.actors = { $regex: new RegExp(req.query.actors, 'i') };
     }
-    if (req.query.actors) {
+    if (req.query.directors) {
         query.directors = { $regex: new RegExp(req.query.directors, 'i') };
     }
-    if (req.query.actors) {
-        query.year = { $regex: new RegExp(req.query.year, 'i') };
-
+    if (req.query.year) {
+        query.year = req.query.year
     }
     try {
         const movies = await Movie.find(query);
