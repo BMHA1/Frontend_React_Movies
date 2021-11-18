@@ -3,10 +3,14 @@ import { NavLink } from "react-router-dom";
 import './Login.css'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
+import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
 
+    let navigate = useNavigate()
+ 
 
+    //enviamos datos y logeamos al usuario 
     const handleSendData = async (e) => {
         e.preventDefault()
         let email = e.target.email.value
@@ -17,16 +21,28 @@ const Login = () => {
             let res = await APIConsumer.loginUser(email, password)
             console.log(res.token)
             localStorage.setItem("token", res.token)
+            decode(res.token)
 
-            let jtw = jwt_decode(res.token)
-            console.log (jtw.role)
-            // if(token){
-            //     useNavigate.lo
-            // }
         } catch (error) {
             alert(error + "hola mundo")
         }
+
     }
+
+
+    const decode = (token) => {
+
+        let jtw = jwt_decode(token)
+        console.log(typeof token)
+        console.log(token)
+        if (jtw && jtw.role === "user") {
+            localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
+            navigate('/profileUser')
+        } else {
+            navigate('/profileAdmin')
+        }
+    }
+
     return (
         <>
             <form onSubmit={(e) => handleSendData(e)}>
@@ -58,6 +74,7 @@ const Login = () => {
                 </button>
                 <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
             </form>
+
         </>
     )
 }
