@@ -2,6 +2,32 @@ const Rental = require('./model');
 const Movie = require('../movie/model');
 const moment = require('moment');
 
+module.exports.createRental = async (req, res) => {
+
+    const arrayMovie = req.body.movieId
+    const arrayPrice = await Promise.all(arrayMovie.map(async (value) => {
+        try {
+            const objectResult = await Movie.findById({ _id: value });
+            return objectResult.price
+        } catch (e) {
+            console.log(e)
+        }
+    })
+    )
+    let result = arrayPrice.reduce((a, b) => a + b)
+    try {
+        console.log(typeof req.body.userId)
+        const newRental = new Rental(req.body);
+        newRental.totalPrice = result
+        newRental.userID= req.token._id
+        newRental.rentalDate = moment()
+        newRental.expirationDate = newRental.rentalDate.clone().add(8, "days"),
+            await newRental.save();
+        res.status(404).json({ message: 'is good' })
+    } catch (error) {
+    }
+};
+
 module.exports.getRentals = async (req, res) => {
     let filter = {} ;
     
