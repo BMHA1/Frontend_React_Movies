@@ -14,7 +14,7 @@ const RentalSchema = new mongoose.Schema({
     totalPrice: [{
         type: Number,
         required: true 
-    }], // "funcion que sume todos los precios de las peliculas seleccionada"
+    }],
     rentalDate: { 
         type: Date,
         required: true
@@ -25,6 +25,4 @@ const RentalSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Rental', RentalSchema)
-// const User = mongoose.model('User', userSchema)
-// const Movie = mongoose.model('Movie', movieSchema)
+module.exports = mongoose.model('Rental', RentalSchema);

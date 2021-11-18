@@ -2,8 +2,6 @@ const User = require('./model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Método para crear un usuario.
-
 module.exports.createUser = async (req, res) => {
     if (!req.body.password) {
         res.json({
@@ -36,8 +34,6 @@ module.exports.createUser = async (req, res) => {
     }
 }
 
-// Método para buscar todos usuarios.
-
 module.exports.getUserCollection = async (req, res) => {
     try {
         if (req.query.name) {
@@ -65,8 +61,6 @@ module.exports.getUserCollection = async (req, res) => {
         }
     }
 }
-
-// Método para buscar a través de uno de los valores del documento Users.
 
 module.exports.getUserByKey = async (req, res) => {
     let query = {};
@@ -96,8 +90,6 @@ module.exports.getUserByKey = async (req, res) => {
     }
 }
 
-// Método para buscar un usuario por ID.
-
 module.exports.getUserById = async (req, res) => {
     const name = req.params.id ;
     try {
@@ -117,7 +109,6 @@ module.exports.getUserById = async (req, res) => {
     }
 }
 
-/**esta es mi idea para el login */
 module.exports.loginUser = async (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.json({

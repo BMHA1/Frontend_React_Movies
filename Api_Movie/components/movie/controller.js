@@ -1,7 +1,5 @@
 const Movie = require('./model');
 
-// Método para crear una película en la BBDD.
-
 module.exports.createMovie = async (req, res) => {
     const movie = new Movie(req.body);
     try {
@@ -20,9 +18,6 @@ module.exports.createMovie = async (req, res) => {
         }
     }
 };
-
-
-// Método para buscar a través de uno de los valores del documento Movies.
 
 module.exports.getMovieByKey = async (req, res) => {
 
@@ -53,8 +48,6 @@ module.exports.getMovieByKey = async (req, res) => {
     }
 };
 
-// Método para buscar película por ID.
-
 module.exports.getMovieById = async (req, res) => {
 
     try {
@@ -73,8 +66,6 @@ module.exports.getMovieById = async (req, res) => {
         }, 500);
     }
 };
-
-// Método para borrar películas. a través del ID.
 
 module.exports.deleteMovie = async (req, res) => {
     
@@ -96,7 +87,7 @@ module.exports.deleteMovie = async (req, res) => {
         }, 500);
     }
 };
-// Método para modificar un valor de películas a través de una búsqueda por ID.
+
 module.exports.modifyMovie = async (req, res) => {
 
     try {
