@@ -51,7 +51,7 @@ const Login = () => {
                                     value={setPassword}
                                     onChange={handleChange}
                                     required />
-                            </label>
+                            </label>s
                         </div>
                     </div>
                     <button >
