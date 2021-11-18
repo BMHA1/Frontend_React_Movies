@@ -22,7 +22,7 @@ module.exports.createRental = async (req, res) => {
         console.log(typeof req.body.userId)
         const newRental = new Rental(req.body);
         newRental.totalPrice = result
-        newRental.userID= req.token._id
+        newRental.userID = req.token._id
         newRental.rentalDate = moment()
         newRental.expirationDate = newRental.rentalDate.clone().add(8, "days"),
             await newRental.save();
