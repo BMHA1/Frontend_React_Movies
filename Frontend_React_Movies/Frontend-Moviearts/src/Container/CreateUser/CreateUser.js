@@ -1,76 +1,76 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import { APIConsumer } from '../../services/APIConsumer';
 
 
-const SingUp = () => {
+const CreateUser = () => {
 
     console.log("aqui esta")
-    // const createUSer = async() => {
-    //     let res = await fetch(url)
-    //     res = await res.json
-    // }
-    // useEffect(() => {
-    //    fech(url || url2 )
-    // }, [])
-    // useState(() => {
-    //     createUSer()
-    // }, [])
 
+    const HandelChangeSend = async (d) => {
+
+        d.preventDefault()
+        const name = d.target.name.value
+        console.log(d.target.name.value)
+        const surname = d.target.surname.value
+        console.log(d.target.surnaname.value)
+        const mail = d.target.mail.value
+        const password = d.target.password.value
+
+        try {
+            let result = await APIConsumer.CreateUser(name, surname, mail, password)
+            console.log(result)
+            localStorage.setItem("token", result)
+
+        } catch (error) {
+            alert(error)
+        }
+
+
+    }
     return (
         <>
-            <form >
+            <form onSubmit={(d) => HandelChangeSend(d)} >
                 <fieldset>
                     <legend>Por Favor Rellene todos los campos</legend>
                     <div>
                         <div>
                             <label>
-                                Nombre: 
                                 <input
                                     type='text'
-                                    name='name'  
-                                    placeholder="Escribe aqui tu nombre"
-                                    // value ={state.name}
-                                    // onChange = {handleChange}
-                                    required/>
+                                    name='name'
+                                    placeholder="Name"
+                                    required />
                             </label>
                         </div>
                         <div>
                             <label>
-                                Apellido: 
-                                <input 
-                                    type='text' 
-                                    name='surname'  
-                                    placeholder="Escribe aqui tu apellido" 
-                                    // value = {state.name}
-                                    // onChange= {handleChange}
-                                    required/>
-                            
-                            </label>
-                        </div>
-                        <div>
-                            <label>Email: 
-                            <input 
-                                type='email' 
-                                name='email'  
-                                placeholder="Escribe aqui tu email" 
-                                // value = {state.name}
-                                // onChange= {handleChange} 
-                                required/>
+                                <input
+                                    type='text'
+                                    name='surname'
+                                    placeholder="Escribe aqui tu apellido"
+                                    required />
                             </label>
                         </div>
                         <div>
                             <label>
-                                Password: 
-                                <input 
-                                    type='text' 
-                                    name='password'  
-                                    placeholder="Escribe aqui tu contraseña" 
-                                    // value = {state.name}
-                                    // onChange= {handleChange}
-                                    required/>
+                                <input
+                                    type='email'
+                                    name='email'
+                                    placeholder="Escribe aqui tu email"
+                                    required />
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input
+                                    type='password'
+                                    name='password'
+                                    placeholder="Escribe aqui tu contraseña"
+                                    required />
                             </label>
                         </div>
                     </div>
-                <button> Registrar nuevo usuario </button>
+                    <button type="onSubmit" > Registrar nuevo usuario </button>
                 </fieldset>
             </form>
         </>
@@ -78,4 +78,4 @@ const SingUp = () => {
 
 }
 
-export default SingUp
+export default CreateUser

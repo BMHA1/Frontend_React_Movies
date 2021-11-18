@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from "./Container/Login/Login";
-import Header from "./Components/Header/Header";
+import Header from "./Container/Components/Header/Header";
 import SingUp from "./Container/CreateUser/CreateUser";
 
 function App() {
   return (
     <div className="App">
-    
-    <BrowserRouter>
-      <Header/>
+
+      <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path="/login" element={<Login/>} exact />
+          <Route path="/" element={<Login />} exact />
         </Routes>
         <Routes>
-          <Route path="/register" element={<SingUp/>} exact />
+          <Route path="/register" element={<SingUp />} exact />
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
 
     </div>
   );

@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import './Login.css'
+import { APIConsumer } from "../../services/APIConsumer"
+import jwt_decode from "jwt-decode"
 
 const Login = () => {
 
 
-    const [Email, setEmail] = useState(null)
-    const [Password, setPassword] = useState(null)
+    const handleSendData = async (e) => {
+        e.preventDefault()
+        let email = e.target.email.value
+        let password = e.target.password.value
 
+        try {
 
-    useEffect(() => {
-        console.log('soy estado2')
-        fetch('http:localhost:4025/users/login', {
-            method: 'POST', // preguntar si aqui pueden ir varios metodos
-            body: JSON.stringify({
-                "email": Email,
-                "password": Password,
-            })
-        })
-    }, [])
+            let res = await APIConsumer.loginUser(email, password)
+            console.log(res.token)
+            localStorage.setItem("token", res.token)
 
-    const handleChange = (event) => {
-        setEmail(event.target.value);
-        console.log(setEmail)
+            let jtw = jwt_decode(res.token)
+            console.log (jtw.role)
+            // if(token){
+            //     useNavigate.lo
+            // }
+        } catch (error) {
+            alert(error + "hola mundo")
+        }
     }
-
     return (
         <>
-            <form className="color">
+            <form onSubmit={(e) => handleSendData(e)}>
                 <fieldset>
-                    <legend>Bienvenido a BMS</legend>
+                    <legend>Bienvenido a mi página</legend>
                     <div>
                         <div className="float-right">
                             <label>
@@ -37,8 +39,6 @@ const Login = () => {
                                     type='email'
                                     name='email'
                                     placeholder="Escribe aqui tu email"
-                                    value={setEmail}
-                                    onChange={handleChange}
                                     required />
                             </label>
                         </div>
@@ -48,21 +48,17 @@ const Login = () => {
                                     type='password'
                                     name='password'
                                     placeholder="Password"
-                                    value={setPassword}
-                                    onChange={handleChange}
                                     required />
-                            </label>s
+                            </label>
                         </div>
                     </div>
-                    <button >
-                        Entrar
-                    </button>
-
-                    <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
                 </fieldset>
+                <button type="onSubmit" >
+                    Entrar
+                </button>
+                <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
             </form>
         </>
     )
 }
-
 export default Login
