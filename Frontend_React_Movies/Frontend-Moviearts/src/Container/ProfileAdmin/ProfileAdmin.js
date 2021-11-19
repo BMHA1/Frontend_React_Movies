@@ -11,7 +11,7 @@ const ProfileAdmin = () => {
                         <NavLink to="/">Register Admin</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/">Register Movie</NavLink>
+                        <NavLink to="/listUser">List users</NavLink>
                     </li>
                 </ul>
             </div>

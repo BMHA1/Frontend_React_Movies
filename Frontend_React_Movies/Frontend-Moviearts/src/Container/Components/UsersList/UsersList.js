@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { APIConsumer } from '../../services/APIConsumer';
-
-const UserList = () => {
+import { APIConsumer } from '../../../services/APIConsumer';
+import UserCard from '../UserCard/UserCard'
+const UsersList = () => {
 
     const [users, setUsers] = useEffect([])
     const [loading, setLoading] = useEffect([true])
@@ -11,18 +11,24 @@ const UserList = () => {
 
         setTimeout(async () => {
             try {
-                let resul = await APIConsumer.getAllMovies
-                res=await resul.json()
+                let resul = await APIConsumer.getAllMovies()
+                resul = await resul.json()
+                setUsers(resul.json)
+                setLoading(false)
             } catch (error) {
-
+                setError(true)
+                setLoading(false)
             }
         })
-
-
     }
-    return (
+    useEffect(() => {
+        getUsers()
+    }, [])
 
+    return (
         <>
+            {error && <h1>¡I'm sorry, something has happened!</h1>}
+            {loading && <h1>Loading...</h1>}
             {users.map((data) => {
                 return (
                     <>
@@ -30,10 +36,10 @@ const UserList = () => {
                         <UserCard surname={data.surname} />
                         <UserCard surname={data.surname} />
                     </>
-
                 )
             })}
         </>
     )
 
-}
+} 
+export default UsersList
