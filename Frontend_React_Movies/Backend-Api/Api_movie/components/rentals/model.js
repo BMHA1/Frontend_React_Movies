@@ -11,6 +11,7 @@ const RentalSchema = new mongoose.Schema({
         ref: "Movie",
         required: true
     }],
+<<<<<<< HEAD:Api_Movie/components/rentals/model.js
     totalPrice: [{
         type: Number,
         required: true 
@@ -22,6 +23,11 @@ const RentalSchema = new mongoose.Schema({
     expirationDate: {
         type: Date,
         required: true
+=======
+    totalPrice: [{ type: Number }], // "funcion que sume todos los precios de las peliculas seleccionada"
+    rentalDate: {type: Object},
+    expirationDate: {type: Object
+>>>>>>> be916ae0484730d21ce3fa3e7a29c0a6cf80780f:Frontend_React_Movies/Backend-Api/Api_movie/components/rentals/model.js
     },
 })
 
