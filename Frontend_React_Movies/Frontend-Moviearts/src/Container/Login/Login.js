@@ -1,35 +1,54 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
-import './Login.css'
+import './Login.scss'
+import { APIConsumer } from "../../services/APIConsumer"
+import jwt_decode from "jwt-decode"
+import { useNavigate } from 'react-router-dom'
+// import logo from '../../../public/Imagenes/logo.JPG'
 
-const Login = () => {
+const Login = (props) => {
+
+    let navigate = useNavigate()
+
+    //enviamos datos y logeamos al usuario 
+    const handleSendData = async (e) => {
+        e.preventDefault()
+        let email = e.target.email.value
+        let password = e.target.password.value
+
+        try {
+
+            let res = await APIConsumer.loginUser(email, password)
+            console.log(res.token)
+            localStorage.setItem("token", res.token)
+            decode(res.token)
+
+        } catch (error) {
+            alert(error + "hola mundo")
+        }
+
+    }
 
 
-    const [Email, setEmail] = useState(null)
-    const [Password, setPassword] = useState(null)
+    const decode = (token) => {
 
-
-    useEffect(() => {
-        console.log('soy estado2')
-        fetch('http:localhost:4025/users/login', {
-            method: 'POST', // preguntar si aqui pueden ir varios metodos
-            body: JSON.stringify({
-                "email": Email,
-                "password": Password,
-            })
-        })
-    }, [])
-
-    const handleChange = (event) => {
-        setEmail(event.target.value);
-        console.log(setEmail)
+        let jtw = jwt_decode(token)
+        console.log(typeof token)
+        console.log(token)
+        if (jtw && jtw.role === "user") {
+            localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
+            navigate('/profileUser')
+        } else {
+            navigate('/profileAdmin')
+        }
     }
 
     return (
-        <>
-            <form className="color">
+        <div className = "Profile">
+            <h1 className='logo'>MovieArt B.M.S</h1>
+            <form onSubmit={(e) => handleSendData(e)}>
                 <fieldset>
-                    <legend>Bienvenido a BMS</legend>
+                    <legend>Bienvenido a mi página</legend>
                     <div>
                         <div className="float-right">
                             <label>
@@ -37,8 +56,6 @@ const Login = () => {
                                     type='email'
                                     name='email'
                                     placeholder="Escribe aqui tu email"
-                                    value={setEmail}
-                                    onChange={handleChange}
                                     required />
                             </label>
                         </div>
@@ -48,21 +65,18 @@ const Login = () => {
                                     type='password'
                                     name='password'
                                     placeholder="Password"
-                                    value={setPassword}
-                                    onChange={handleChange}
                                     required />
-                            </label>s
+                            </label>
                         </div>
                     </div>
-                    <button >
-                        Entrar
-                    </button>
-
-                    <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
                 </fieldset>
+                <button type="onSubmit" >
+                    Entrar
+                </button>
+                <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
             </form>
-        </>
+
+        </div>
     )
 }
-
 export default Login
