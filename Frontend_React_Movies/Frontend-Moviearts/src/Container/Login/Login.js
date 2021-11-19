@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
-import './Login.css'
+import './Login.scss'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
@@ -44,7 +44,7 @@ const Login = (props) => {
     }
 
     return (
-        <>
+        <div className = "Profile">
             <h1 className='logo'>MovieArt B.M.S</h1>
             <form onSubmit={(e) => handleSendData(e)}>
                 <fieldset>
@@ -76,7 +76,7 @@ const Login = (props) => {
                 <button> <NavLink className="navbar-item" activeClassName="is-active" to="/register">Sing Up</NavLink></button>
             </form>
 
-        </>
+        </div>
     )
 }
 export default Login

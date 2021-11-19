@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
+import './App.scss';
 import Login from "./Container/Login/Login";
 import Header from "./Container/Components/Header/Header";
 import  ProfileUser from "./Container/ProfileUser/ProfileUser"
@@ -12,11 +12,11 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Login />} exact />
           <Route path="/register" element={<CreateUser />} exact />
         </Routes>
-        <Header />
         <Routes>
           <Route path="/profileUser" element={<ProfileUser/>} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin/>} exact />

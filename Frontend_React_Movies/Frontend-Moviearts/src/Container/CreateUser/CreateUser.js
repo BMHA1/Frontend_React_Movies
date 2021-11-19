@@ -10,9 +10,7 @@ const CreateUser = () => {
 
         d.preventDefault()
         const name = d.target.name.value
-        console.log(d.target.name.value)
         const surname = d.target.surname.value
-        console.log(d.target.surnaname.value)
         const mail = d.target.mail.value
         const password = d.target.password.value
  
