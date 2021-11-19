@@ -1,0 +1,10 @@
+.Navegador{
+    height: 2 em;
+    background-color: brown;
+}
+.ul{
+    list-style:none
+
+}li{
+    font-size: 2em;
+}

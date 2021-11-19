@@ -15,7 +15,7 @@ const CreateUser = () => {
         console.log(d.target.surnaname.value)
         const mail = d.target.mail.value
         const password = d.target.password.value
-
+ 
         try {
             let result = await APIConsumer.CreateUser(name, surname, mail, password)
             console.log(result)

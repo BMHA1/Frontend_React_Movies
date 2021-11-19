@@ -4,11 +4,11 @@ import './Login.css'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
+// import logo from '../../../public/Imagenes/logo.JPG'
 
 const Login = (props) => {
 
     let navigate = useNavigate()
- 
 
     //enviamos datos y logeamos al usuario 
     const handleSendData = async (e) => {
@@ -45,6 +45,7 @@ const Login = (props) => {
 
     return (
         <>
+            <h1 className='logo'>MovieArt B.M.S</h1>
             <form onSubmit={(e) => handleSendData(e)}>
                 <fieldset>
                     <legend>Bienvenido a mi página</legend>

@@ -1,10 +1,22 @@
+import { NavLink } from "react-router-dom";
+import './ProfileAdmin.css'
+const ProfileAdmin = () => {
 
-const ProfileAdmin =()=>{
+    return (
+        <nav className="Navegador">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul className =" ul">
+                    <li >
+                        <NavLink to="/">Register Admin</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/">Register Movie</NavLink>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    return(
-        <h1>
-            Hola Admin
-        </h1>
     )
 }
 
