@@ -1,0 +1,22 @@
+.cartDetails{
+    background-color: #fff;
+    position: absolute;
+    margin-top: 30;
+    box-shadow: 1px 5px 5px rgba($color: #000000, $alpha: .3);
+    border-radius: 5px;
+    width: 300px;
+    right: 0;
+}
+.ul{
+    font-size: 10px;
+    padding: 0%;
+    margin: 0;
+}
+.movie{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px;
+    border-bottom: 1px solid #aaa;
+}

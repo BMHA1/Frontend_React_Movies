@@ -1,0 +1,10 @@
+.navBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 50px;
+    box-shadow: 0 2px 3px rgba($color: #000000, $alpha: .1);
+}
