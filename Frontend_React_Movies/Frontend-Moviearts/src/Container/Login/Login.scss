@@ -1,3 +1,41 @@
 .Profile {
+ 
+    img {
+        border-top: 1em;
+        height: 20em;
+        width: 20em;
+        border-radius: 100em;
+        border: 0.2em black solid;
+    }
+    form {
+        button {
+            height: 2.5em;
+            width: 8em;
+            border-radius: 50px;
+            margin-right: 0.8em ;
+            margin-top: 0.5em;
+            margin-bottom: 2em;
+            span {
+                color: #00f0b5;
+                mix-blend-mode: difference;
+            }
 
+            span::before {
+                border-radius: 50px;
+                width: 25%;
+                background: #00f0b5;
+            }
+            span:hover {
+                span::before {
+                    background: #00f0b5;
+                    width: 100%;
+                }
+            }
+        }
+
+        legend {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2em;
+        }
+    }
 }
