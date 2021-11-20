@@ -1,3 +1,4 @@
+import Button from '../Button/Button';
 import './CartDetails.scss'
 
 const CartDatails = (props) => {
@@ -7,6 +8,7 @@ const CartDatails = (props) => {
         <div className="cartDetails" >
             <ul className='ul'>
                 {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.precio}</span> </li> )}
+                <Button className="finalizePurchase" onClick={()=>console.log('vamos bien')}>finalize purchase</Button>
             </ul>
         </div>
     )
