@@ -5,7 +5,7 @@ const ProfileAdmin = () => {
     return (
         <nav className="Navegador">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
+                {/* <a href="#" class="brand-logo">Logo</a> */}
                 <ul className =" ul">
                     <li >
                         <NavLink to="/">Register Admin</NavLink>
