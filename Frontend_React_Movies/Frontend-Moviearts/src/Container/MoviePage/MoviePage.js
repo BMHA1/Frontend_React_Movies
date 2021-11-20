@@ -19,7 +19,7 @@ class MoviePage extends Component {
             { title: 'Iron Man', year: 2001, precio:15,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
         ],
         cart:[],
-        cartVisible: false
+        cartVisible: false,
     }
 
     addToCart = (movie) =>{
@@ -39,14 +39,22 @@ class MoviePage extends Component {
     }
 
     showCart = () => {
+        if (!this.state.cart.length) {
+            return
+        }
         this.setState({cartVisible: !this.state.cartVisible})
     }
 
     render(){
-        const { cartVisible} = this.state
+        const { cartVisible } = this.state
+        console.log(cartVisible);
         return(
             <div>
-                <NavBar cart={this.state.cart} cartVisible={cartVisible} showCart={this.showCart}/>
+                <NavBar 
+                    cart={this.state.cart} 
+                    cartVisible={cartVisible} 
+                    showCart={this.showCart}
+                />
                 <LayOut>
                     <Tittle/>
                     <MovieList

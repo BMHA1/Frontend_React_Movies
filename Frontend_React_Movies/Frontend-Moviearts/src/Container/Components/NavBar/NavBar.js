@@ -7,7 +7,11 @@ const NavBar = (props) => {
     return(
         <nav className='navBar'>
             <Logo/>
-            <Cart cart={cart}/>
+            <Cart 
+            cart={cart}
+            cartVisible={cartVisible}
+            showCart={showCart}
+            />
         </nav>
     )
 };
