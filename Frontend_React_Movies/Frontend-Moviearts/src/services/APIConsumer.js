@@ -5,8 +5,9 @@ export const APIConsumer = {
             method: "GET",
             headers:{"Authorization" : "Bearer" + localStorage.getItem('token')}
         })
-        console.log(result.json());
-        return await result.json()
+        console.log(result);
+        result = await result.json()
+        
     },
 
 
@@ -19,22 +20,41 @@ export const APIConsumer = {
         })
         return result
     },
+    
     loginUser: async (email, password) => {
-        try {
-            let result = await fetch(`http://localhost:9525/users/login`, {
+        try{
+            let result = await fetch('http://localhost:9525/users/login',{
                 method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    "email": email,
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                    "email": email, 
                     "password": password
                 })
             })
-            return await result.json()
-        } catch (error) {
-
-            console.log(error)
+            result = await result.json()
+            console.log(result);
+            // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
+            localStorage.setItem('token', result)
+        } catch(e){
+            console.log(e)
         }
     },
+    // loginUser: async (email, password) => {
+    //     try {
+    //         let result = await fetch(`http://localhost:4000/users/login`, {
+    //             method: "POST",
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({
+    //                 "email": email,
+    //                 "password": password
+    //             })
+    //         })
+    //         return await result.json()
+    //     } catch (error) {
+
+    //         console.log(error)
+    //     }
+    // },
     CreateUser: async (name, surname, email, password) => {
         try {
             let result = await fetch(`http://localhost:4000/usuario/login`, {
