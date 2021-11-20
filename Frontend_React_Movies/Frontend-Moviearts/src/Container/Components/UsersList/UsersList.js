@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import UserCard from '../UsersList/UsersList'
+
+
+
+
 const UsersList = () => {
 
-    const [users, setUsers] = useEffect([])
-    const [loading, setLoading] = useEffect([true])
-    const [error, setError] = useEffect([false])
+    const [users, setUsers] = useState([])
+    const [loading, setLoading] = useState([true])
+    const [error, setError] = useState([false])
 
     const getUsers = () => {
 
@@ -13,9 +17,11 @@ const UsersList = () => {
             try {
                 let resul = await APIConsumer.getAllMovies()
                 resul = await resul.json()
-                setUsers(resul.json)
+                console.log(resul)
+                setUsers(resul)
                 setLoading(false)
             } catch (error) {
+                console.log(error)
                 setError(true)
                 setLoading(false)
             }
@@ -34,7 +40,7 @@ const UsersList = () => {
                     <>
                         <UserCard name={data.name} />
                         <UserCard surname={data.surname} />
-                        <UserCard surname={data.surname} />
+                        <UserCard surname={data.email} />
                     </>
                 )
             })}
