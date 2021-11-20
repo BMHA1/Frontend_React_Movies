@@ -1,0 +1,13 @@
+.nav-wrapper {
+    height: 2 em;
+    background-color: brown;
+    
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        li {
+            font-size: 2em;
+        }
+    }
+}

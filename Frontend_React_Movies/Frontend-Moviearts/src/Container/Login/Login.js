@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom";
+// import React, { useState, useEffect } from 'react';
+// import { NavLink } from "react-router-dom";
 import './Login.scss'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.JPG"
+// import LayOut from '../Components/LayOut/LayOut';
 
 const Login = (props) => {
 
@@ -12,8 +13,8 @@ const Login = (props) => {
 
     // const [tipoUsuario, setTipoUsuario] = useState(user)
 
-    
-    
+
+
     //  useEffect(() => {
     //     //  buscar el token
     //     const rol = decode(token)
@@ -49,7 +50,7 @@ const Login = (props) => {
         console.log(token)
         if (jtw && jtw.role === "user") {
             localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
-            navigate('/profileUser')
+            navigate('/moviepage')
         } else {
             navigate('/profileAdmin')
         }
@@ -59,37 +60,39 @@ const Login = (props) => {
     }
 
     return (
-        <div className="Profile">
-            <form onSubmit={(e) => handleSendData(e)}>
-                <legend>¿Preparado para vivir una experiencia?</legend>
-                <div className='formulario'>
-                    <div className="float-right">
-                        <label>
-                            <input
-                                type='email'
-                                name='email'
-                                placeholder="Escribe aqui tu email"
-                                required />
-                        </label>
+      
+            <div className="Profile">
+                <form onSubmit={(e) => handleSendData(e)}>
+                    <legend>¿Preparado para vivir una experiencia?</legend>
+                    <div className='formulario'>
+                        <div className="float-right">
+                            <label>
+                                <input
+                                    type='email'
+                                    name='email'
+                                    placeholder="Escribe aqui tu email"
+                                    required />
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input
+                                    type='password'
+                                    name='password'
+                                    placeholder="Password"
+                                    required />
+                            </label>
+                        </div>
                     </div>
-                    <div>
-                        <label>
-                            <input
-                                type='password'
-                                name='password'
-                                placeholder="Password"
-                                required />
-                        </label>
-                    </div>
-                </div>
 
-                {/* {register && <Registro />} */}
+                    {/* {register && <Registro />} */}
 
-                <button className="buttonEntrar" type="onSubmit"  > <span>  Entrar </span></button>
-                <button onClick={() => redirection()} > <span> Registrarte </span> </button>
-            </form>
-            <img className="Logo" src={logo} />
-        </div>
+                    <button className="buttonEntrar" type="onSubmit"  > <span>  Entrar </span></button>
+                    <button onClick={() => redirection()} > <span> Registrarte </span> </button>
+                </form>
+                <img className="Logo" src={logo} />
+            </div>
+      
     )
 }
 export default Login
