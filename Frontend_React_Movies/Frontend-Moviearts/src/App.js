@@ -20,7 +20,7 @@ function App() {
           <Route path="/moviepage" element={<MoviePage />} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin />} exact />
           <Route path="/UsersList" element={<UsersList />} exact />
-
+          <Route path="/pruebaefecth" element={<MoviePage/>} exact/>
         </Routes>
       </BrowserRouter>
 

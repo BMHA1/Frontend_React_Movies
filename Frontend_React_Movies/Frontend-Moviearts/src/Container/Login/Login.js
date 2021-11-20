@@ -30,31 +30,35 @@ const Login = (props) => {
         e.preventDefault()
         let email = e.target.email.value
         let password = e.target.password.value
+        let res = await APIConsumer.loginUser(email, password)
 
-        try {
 
-            let res = await APIConsumer.loginUser(email, password)
-            console.log(res.token)
-            localStorage.setItem("token", res.token)
-            decode(res.token)
+        // try {
 
-        } catch (error) {
-            alert(error + "hola mundo")
-        }
+        //     let res = await APIConsumer.loginUser(email, password)
+        //     console.log(res.token)
+        //     localStorage.setItem("token", res.token)
+        //     decode(res.token)
+
+        // } catch (error) {
+        //     alert(error + "hola mundo")
+        // }
 
     }
-    const decode = (token) => {
+    // const decode = (token) => {
 
-        let jtw = jwt_decode(token)
-        console.log(typeof token)
-        console.log(token)
-        if (jtw && jtw.role === "user") {
-            localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
-            navigate('/moviepage')
-        } else {
-            navigate('/profileAdmin')
-        }
-    }
+    //     let jtw = jwt_decode(token)
+    //     console.log(typeof token)
+    //     console.log(token)
+    //     if (jtw && jtw.role === "user") {
+    //         localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
+    //         navigate('/profileUser')
+    //     } else {
+    //         navigate('/profileAdmin')
+    //     }
+    // }
+
+    
     const redirection = () => {
         navigate("/register")
     }
