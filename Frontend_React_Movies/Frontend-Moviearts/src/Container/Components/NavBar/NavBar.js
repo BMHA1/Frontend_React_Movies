@@ -3,7 +3,7 @@ import './NavBar.scss';
 import Cart from '../Cart/Cart';
 
 const NavBar = (props) => {
-    const { cart } = props
+    const { cart, cartVisible, showCart} = props
     return(
         <nav className='navBar'>
             <Logo/>

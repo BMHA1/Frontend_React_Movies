@@ -9,24 +9,25 @@ class MoviePage extends Component {
     //esta es la importacion desde el servidor 
     state = {
         movies:[
-            { title: 'Soy Leyenda', year: 2007, precio:2,   imagen:'../../../../public/productos/soy_leyenda.jpg'},
-            { title: 'Yo Robots', year: 2002, precio:2,  imagen:'../../../../public/productos/yo_robot.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:2,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:2,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:2,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:2,  imagen:'../../../../public/productos/bicentenial_man.jpg'}
+            { title: 'Soy Leyenda', year: 2007, precio:10,   imagen:'../../../../public/productos/soy_leyenda.jpg'},
+            { title: 'Yo Robots', year: 2002, precio:6,  imagen:'../../../../public/productos/yo_robot.jpg'},
+            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
+            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
+            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
+            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
+            { title: 'Evangelion', year: 2001, precio:10,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
+            { title: 'Iron Man', year: 2001, precio:15,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
         ],
-        cart:[]
+        cart:[],
+        cartVisible: false
     }
 
     addToCart = (movie) =>{
         const { cart } = this.state
         if(cart.find(x => x.title === movie.title)){ 
             const newCart = cart.map(x => x.title === movie.title?({
-                ...x,
-                cantidad: x.cantidad + 0
+                ...x
             }): x )
-            console.log(newCart);
             return this.setState({cart:newCart})
         }
         return this.setState({
@@ -37,10 +38,15 @@ class MoviePage extends Component {
         })
     }
 
+    showCart = () => {
+        this.setState({cartVisible: !this.state.cartVisible})
+    }
+
     render(){
+        const { cartVisible} = this.state
         return(
             <div>
-                <NavBar cart={this.state.cart}/>
+                <NavBar cart={this.state.cart} cartVisible={cartVisible} showCart={this.showCart}/>
                 <LayOut>
                     <Tittle/>
                     <MovieList

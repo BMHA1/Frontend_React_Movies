@@ -1,7 +1,6 @@
 import { Component } from "react";
 import MovieCard from "../MovieCard/MovieCard";
-import './MovieList.scss'
-
+import './MovieList.scss' ;
 class MovieList extends Component {
     render(){
         const { movies, addToCart } = this.props
@@ -16,4 +15,5 @@ class MovieList extends Component {
         )
     }
 };
+
 export default MovieList
