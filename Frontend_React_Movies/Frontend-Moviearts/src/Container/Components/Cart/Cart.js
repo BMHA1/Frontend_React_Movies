@@ -5,10 +5,9 @@ import './Cart.scss'
 
 const Cart = (props) => {
 
-    const { cart } = props
+    const { cart, cartVisible, showCart} = props
     
     const cantidad = cart.reduce((acc, ele) => acc + 1, 0)
-    console.log(Number(cantidad));
     
     return(
         <div>
@@ -17,8 +16,11 @@ const Cart = (props) => {
                 ? <BubbleAlert value={cantidad} /> 
                 : null }
             </span>
-            <Button className='cart' >Cesta</Button>
-            <CartDatails cart={cart}/>
+            <Button className='cart' onClick={showCart}>
+                Cesta
+            </Button>
+            {cartVisible ? <CartDatails cart={cart}/> : null}
+            
         </div>
     )
 };
