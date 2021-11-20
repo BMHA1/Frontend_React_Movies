@@ -8,19 +8,9 @@ class MoviePage extends Component {
     
     //esta es la importacion desde el servidor 
     state = {
-        movies:[
-            { title: 'Soy Leyenda', year: 2007, precio:10,   imagen:'../../../../public/productos/soy_leyenda.jpg'},
-            { title: 'Yo Robots', year: 2002, precio:6,  imagen:'../../../../public/productos/yo_robot.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'Evangelion', year: 2001, precio:10,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'Iron Man', year: 2001, precio:15,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-        ],
-        cart:[],
-        cartVisible: false,
     }
+
+    
 
     addToCart = (movie) =>{
         const { cart } = this.state

@@ -23,7 +23,7 @@ function App() {
           <Route path="/profileUser" element={<ProfileUser />} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin />} exact />
           <Route path="/UsersList" element={<UsersList />} exact />
-
+          <Route path="/pruebaefecth" element={<MoviePage/>} exact/>
         </Routes>
       </BrowserRouter>
 

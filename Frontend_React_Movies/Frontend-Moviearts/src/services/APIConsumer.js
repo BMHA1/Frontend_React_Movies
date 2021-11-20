@@ -2,10 +2,14 @@
 export const APIConsumer = {
     getMovies: async (text) => {
         const result = await fetch(`http://apimobiedb.com/movies?search=${text}`, {
-            method: "GET"
+            method: "GET",
+            headers:{"Authorization" : "Bearer" + localStorage.getItem('token')}
         })
-        return result
+        console.log(result.json());
+        return await result.json()
     },
+
+
     saveMovie: async (movie) => {
         const result = await fetch(`http://apimobiedb.com/movies`, {
             method: "POST",
@@ -17,7 +21,7 @@ export const APIConsumer = {
     },
     loginUser: async (email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/users/login`, {
+            let result = await fetch(`http://localhost:9525/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
