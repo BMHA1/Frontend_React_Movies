@@ -1,7 +1,9 @@
-import { APIConsumer } from '../../../services/APIConsumer';
+import { element } from "prop-types";
+import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import RentalsCard from '../../Components/RentalsCard/RentalsCard'
-import './UserList.scss'
+import './RentalsList.scss'
+import Select from "react-select/dist/declarations/src/Select";
 
 
 
@@ -35,7 +37,6 @@ const RentalList = () => {
 
     return (
         <>
-
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
             <div className="rentalsList">
@@ -43,14 +44,13 @@ const RentalList = () => {
                     return (
                         <RentalsCard
                             id={rentals._id}
-                            name={rentals.name} surname={rentals.surname}
-                            title={rentals.title}
+                            name={rentals.userId.name} surname={rentals.userId.username}
+                            title={rentals.movieId.map((e) => ""=e.title)}
                             totalPrice={rentals.totalPrice}
-                            email={rentals.email} />
+                            email={rentals.userId.email} />
                     )
                 })}
             </div>
-
         </>
     )
 

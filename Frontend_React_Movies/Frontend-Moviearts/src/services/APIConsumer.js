@@ -85,15 +85,17 @@ export const APIConsumer = {
     },
 
     getAllRentals: async () => {
+        console.log(localStorage.getItem("token"))
+
         try {
             const result = await fetch(`http://localhost:4000/rentals`, {
                 headers: {
                     "content-type": "application/json",
-                    Token: "Bearer" + localStorage.getItem("token")
+                    // Authorization:  localStorage.getItem("token")
                 },
                 method: "GET"
             })
-
+            console.log(result)
             return await result.json()
 
         } catch (error) {

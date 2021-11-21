@@ -1,15 +1,18 @@
 import './RentalsCard.scss'
 
+
+
 const RentalCard= (props) => {
+console.log(props.title)
 
     return (
         <>
             <div className='cardRentals'>
-                <span>{props.id}</span>
-                <span>{props.name}</span>
+                <span>UserId:{props.id}</span>
+                <span>Name: {props.name} </span>
                 <span>{props.title}</span>
-                <span>{props.totalPrice}$</span>
-                <span>{props.email}</span>
+                <span> Price Total: {props.totalPrice}$</span>
+                <span> Email: {props.email}</span>
             </div>
         </>
     )
