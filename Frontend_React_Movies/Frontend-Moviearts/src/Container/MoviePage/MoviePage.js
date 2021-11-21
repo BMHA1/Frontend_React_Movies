@@ -1,10 +1,13 @@
 import { Component } from "react";
+import './MaviePage.scss'
 import LayOut from "../Components/LayOut/LayOut";
 import MovieList from "../Components/MovieList/MovieList";
 import NavBar from "../Components/NavBar/NavBar";
+import Search from "../Components/Search/Search";
 import Tittle from "../Components/Title/Tittle";
 
 class MoviePage extends Component {
+
     
     //esta es la importacion desde el servidor 
     state = {
@@ -21,7 +24,15 @@ class MoviePage extends Component {
         cart:[],
         cartVisible: false,
     }
+    
+    handleGetData = (e) =>{
+        e.preventDefault()
+        console.log(e.target.value);
+    };
 
+    findMovie = (movie) =>{
+        const { movies } = this.state
+    };
     addToCart = (movie) =>{
         const { cart } = this.state
         if(cart.find(x => x.title === movie.title)){ 
@@ -47,9 +58,8 @@ class MoviePage extends Component {
 
     render(){
         const { cartVisible } = this.state
-        console.log(cartVisible);
         return(
-            <div>
+            <div >
                 <NavBar 
                     cart={this.state.cart} 
                     cartVisible={cartVisible} 
@@ -57,6 +67,10 @@ class MoviePage extends Component {
                 />
                 <LayOut>
                     <Tittle/>
+                    <Search
+                    className="search"
+                    {...props}
+                    />
                     <MovieList
                         addToCart={this.addToCart}
                         movies={this.state.movies}

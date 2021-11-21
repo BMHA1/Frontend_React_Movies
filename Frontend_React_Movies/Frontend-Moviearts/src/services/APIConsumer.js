@@ -1,7 +1,7 @@
 
 export const APIConsumer = {
     getMovies: async (text) => {
-        const result = await fetch(`http://apimobiedb.com/movies?search=${text}`, {
+        const result = await fetch(`http://localhost:9525/movies?search=${text}`, {
             method: "GET",
             headers:{"Authorization" : "Bearer" + localStorage.getItem('token')}
         })
