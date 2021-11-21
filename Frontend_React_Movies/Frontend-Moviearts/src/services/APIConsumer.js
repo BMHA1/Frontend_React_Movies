@@ -2,20 +2,37 @@
 export const APIConsumer = {
     getMovies: async (text) => {
         let movies;
+        let url = `http://localhost:9525/movies`;
         if (text) {
-            const result = await fetch(`http://localhost:9525/movies?title=${text}`, {
-                method: "GET",
-                headers:{"Authorization" : "Bearer " + localStorage.getItem('token')}
-            })
-            movies = await result.json();
-        } else {
-            const result = await fetch(`http://localhost:9525/movies`, {
+            url = url + `?search=${text}`;
+        }
+        const result = await fetch(url, {
             method: "GET",
             headers:{"Authorization" : "Bearer " + localStorage.getItem('token')}
         })
         movies = await result.json();
+        return movies;
+    },
+
+    CreateRental: async (userId,moviesId) => {
+        try {
+            let result = await fetch(`http://localhost:9525/rentals`, {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    "Authorization" : "Bearer " + localStorage.getItem('token')
+                },
+                body: JSON.stringify({
+                    "movieId":moviesId,
+                    "userId": userId
+                })
+            })
+
+            return await result.json()
+        } catch (error) {
+
+            console.log(error)
         }
-        return movies 
     },
 
     saveMovie: async (movie) => {
@@ -40,9 +57,7 @@ export const APIConsumer = {
             })
             
             const token = await result.json();
-            console.log(
-                token
-            );
+            console.log(token);
             return token 
         } catch (error) {
 
@@ -90,16 +105,4 @@ export const APIConsumer = {
             console.log(error)
         }
     },
-    getAllMovies: async () => {
-        try {
-            const result = await fetch(`http://localhost:4000/movies`, {
-                method: "GET"
-            })
-
-            return await result.json()
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
 }

@@ -44,11 +44,10 @@ const Login = (props) => {
     }
     const decode = (token) => {
 
-        let jtw = jwt_decode(token)
-        console.log(typeof token)
-        console.log(token)
+        let jtw = jwt_decode(token);
+        console.log(jtw);
+        localStorage.setItem("user", JSON.stringify(jtw));
         if (jtw && jtw.role === "user") {
-            localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
             navigate('/profileUser')
         } else {
             navigate('/profileAdmin')
