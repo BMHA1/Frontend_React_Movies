@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
-import UserCard from '../userCard/UserCard'
+
+import UserCard from '../../Components/UserCard/UserCard'
+import './UserList.scss'
+
+
 const UsersList = () => {
 
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState([true])
-    const [error, setError] = useState([false])
+    const [error, setError] = useState(false)
 
     const getUsers = () => {
-
+        console.log('hola')
         setTimeout(async () => {
             try {
-                let resul = await APIConsumer.getAllMovies()
-                resul = await resul.json()
+                let resul = await APIConsumer.getAllUsers()
                 console.log(resul)
                 setUsers(resul)
                 setLoading(false)
@@ -21,27 +24,31 @@ const UsersList = () => {
                 setError(true)
                 setLoading(false)
             }
-        })
+        }, 5000)
     }
+
     useEffect(() => {
         getUsers()
     }, [])
 
     return (
         <>
+
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
-            {users.map((data) => {
-                return (
-                    <>
-                        <UserCard name={data.name} />
-                        <UserCard surname={data.surname} />
-                        <UserCard surname={data.email} />
-                    </>
-                )
-            })}
+            <div className="usersList">
+                {users.map((user) => {
+                    return (
+                        <UserCard
+                            id={user._id}
+                            name={user.name} surname={user.surname}
+                            role={user.role}
+                            email={user.email} />
+                    )
+                })}
+            </div>
         </>
     )
 
-} 
+}
 export default UsersList

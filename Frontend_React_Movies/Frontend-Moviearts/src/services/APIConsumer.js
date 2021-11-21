@@ -67,7 +67,7 @@ export const APIConsumer = {
 
     CreateUser: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/usuario/login`, {
+            let result = await fetch(`http://localhost:4000/users`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -87,7 +87,7 @@ export const APIConsumer = {
     },
     CreateAdmin: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/user/login`, {
+            let result = await fetch(`http://localhost:4000/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -105,4 +105,36 @@ export const APIConsumer = {
             console.log(error)
         }
     },
+
+    getAllUsers: async () => {
+        try {
+            const result = await fetch(`http://localhost:4000/users`, {
+                method: "GET"
+            })
+
+            return await result.json()
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    getAllRentals: async () => {
+        console.log(localStorage.getItem("token"))
+
+        try {
+            const result = await fetch(`http://localhost:4000/rentals`, {
+                headers: {
+                    "content-type": "application/json",
+                    // Authorization:  localStorage.getItem("token")
+                },
+                method: "GET"
+            })
+            console.log(result)
+            return await result.json()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

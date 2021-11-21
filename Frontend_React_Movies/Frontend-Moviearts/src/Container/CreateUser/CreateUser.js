@@ -1,32 +1,46 @@
 // import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { APIConsumer } from '../../services/APIConsumer';
+import Button from '../Components/Button/Button';
+
+
 
 
 const CreateUser = () => {
 
-    console.log("aqui esta")
+    // const [msgValidation, SetgValidation] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
-    const HandelChangeSend = async (d) => {
 
+
+    const HandelChangeSend = (d) => {
+        setLoading(true)
         d.preventDefault()
         const name = d.target.name.value
         const surname = d.target.surname.value
-        const mail = d.target.mail.value
+        const email = d.target.email.value
         const password = d.target.password.value
- 
-        try {
-            let result = await APIConsumer.CreateUser(name, surname, mail, password)
-            console.log(result)
-            localStorage.setItem("token", result)
+        setTimeout(async () => {
 
-        } catch (error) {
-            alert(error)
-        }
-
+            try {
+                let result = await APIConsumer.CreateUser(name, surname, email, password)
+                console.log(result)
+                setLoading(false)
+            } catch (error) {
+                alert(error)
+                setError(true)
+                setLoading(false)
+            }
+        }, 5000);
 
     }
+
+
     return (
         <>
+            {error && <h1>¡I'm sorry, something has happened!</h1>}
+            {loading && <h1>Loading...</h1>}
             <form onSubmit={(d) => HandelChangeSend(d)} >
                 <fieldset>
                     <legend>Por Favor Rellene todos los campos</legend>
@@ -68,7 +82,7 @@ const CreateUser = () => {
                             </label>
                         </div>
                     </div>
-                    <button type="onSubmit" > Registrar nuevo usuario </button>
+                    <Button type="onSubmit">Registrarte</Button>
                 </fieldset>
             </form>
         </>
