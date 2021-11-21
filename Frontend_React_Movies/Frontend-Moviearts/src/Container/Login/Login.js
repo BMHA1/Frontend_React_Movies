@@ -1,11 +1,11 @@
-// import React, { useState, useEffect } from 'react';
-// import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import './Login.scss'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.JPG"
-// import LayOut from '../Components/LayOut/LayOut';
+import LayOut from '../Components/LayOut/LayOut';
 
 const Login = (props) => {
 
@@ -33,13 +33,12 @@ const Login = (props) => {
 
         try {
 
-            let res = await APIConsumer.loginUser(email, password)
-            console.log(res.token)
-            localStorage.setItem("token", res.token)
-            decode(res.token)
+            let res = await APIConsumer.loginUser(email, password);
+            localStorage.setItem("token", res.token);
+            decode(res.token);
 
         } catch (error) {
-            alert(error + "hola mundo")
+            alert(error, " hola mundo");
         }
 
     }
@@ -50,17 +49,19 @@ const Login = (props) => {
         console.log(token)
         if (jtw && jtw.role === "user") {
             localStorage.setItem("role", "2220519") // letras  u=22 s=20 e=5 r=19
-            navigate('/moviepage')
+            navigate('/profileUser')
         } else {
             navigate('/profileAdmin')
         }
     }
+
+    
     const redirection = () => {
         navigate("/register")
     }
 
     return (
-      
+
             <div className="Profile">
                 <form onSubmit={(e) => handleSendData(e)}>
                     <legend>¿Preparado para vivir una experiencia?</legend>

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
-import UserCard from '../UsersList/UsersList'
-
-
-
-
+import UserCard from '../userCard/UserCard'
 const UsersList = () => {
 
     const [users, setUsers] = useState([])

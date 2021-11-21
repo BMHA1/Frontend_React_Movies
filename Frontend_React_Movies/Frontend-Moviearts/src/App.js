@@ -6,6 +6,7 @@ import ProfileAdmin from "./Container/ProfileAdmin/ProfileAdmin"
 import CreateUser from "./Container/CreateUser/CreateUser";
 import UsersList from "./Container/Components/UsersList/UsersList";
 import MoviePage from "./Container/MoviePage/MoviePage";
+import RentalPage from "./Container/RentalPage/RentalPage";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Route path="/moviepage" element={<MoviePage />} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin />} exact />
           <Route path="/UsersList" element={<UsersList />} exact />
-
+          <Route path="/pruebaefecth" element={<MoviePage/>} exact/>
+          <Route path="/user/rental" element={<RentalPage/>} exact/>
         </Routes>
       </BrowserRouter>
 
