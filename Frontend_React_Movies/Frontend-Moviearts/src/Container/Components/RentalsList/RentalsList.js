@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import RentalsCard from '../../Components/RentalsCard/RentalsCard'
 import './RentalsList.scss'
-import Select from "react-select/dist/declarations/src/Select";
+
 
 
 
@@ -45,7 +45,7 @@ const RentalList = () => {
                         <RentalsCard
                             id={rentals._id}
                             name={rentals.userId.name} surname={rentals.userId.username}
-                            title={rentals.movieId.map((e) => ""=e.title)}
+                            title={rentals.movieId.map((e) => e.title+'  ')}
                             totalPrice={rentals.totalPrice}
                             email={rentals.userId.email} />
                     )

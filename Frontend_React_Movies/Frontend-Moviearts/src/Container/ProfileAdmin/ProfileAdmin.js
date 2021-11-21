@@ -1,41 +1,42 @@
-// import { useEffect } from "react";
-// import { NavLink } from "react-router-dom";
+import { useState} from "react";
 import UsersList from "../Components/UsersList/UsersList";
 import RentalList from "../Components/RentalsList/RentalsList";
 import Button from "../Components/Button/Button";
+import  Logo from "../Components/Logo/Logo"
 import './ProfileAdmin.scss'
 
 const ProfileAdmin = () => {
 
-    // const [CreateUser, setCreateUser] = useEffect(true)
-    // const [ListUsers, setListUser] = useEffect(false)
+    const [ListRentals, setListRentals] = useState(false)
+    const [ListUsers, setListUser] = useState(false)
 
-    const handLechangeenvets = () => {
-
+    const showlistUser = () => {
+        setListRentals(false)
+        setListUser(true)
+    }
+    const showlistRentals = () => {
+        console.log('entró')
+        setListRentals(true)
+        setListUser(false)
     }
 
     return (
         <>
             <nav className="Navegador">
                 <div class="nav-wrapper">
-                    {/* <a href="#" class="brand-logo">Logo</a> */}
+                <Logo/>
                     <ul className=" ul">
                         <li >
-                            <Button>Create Admin</Button>
+                            <Button onClick={() => showlistUser()}>List Users</Button>
                         </li>
                         <li >
-                            <Button >List Users</Button>
-                        </li>
-                        <li >
-                            <Button >List Rentals</Button>
+                            <Button onClick={() => showlistRentals()}>List Rentals</Button>
                         </li>
                     </ul>
                 </div>
             </nav>
-            {/* <div><UsersList /></div> */}
-            <div><RentalList /></div>
-
-
+            {ListUsers && <div><UsersList /></div> }
+            {ListRentals && <div><RentalList /></div>}
         </>
     )
 }
