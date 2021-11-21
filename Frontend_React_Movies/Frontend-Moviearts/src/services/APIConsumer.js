@@ -4,7 +4,7 @@ export const APIConsumer = {
         let movies;
         let url = `http://localhost:9525/movies`;
         if (text) {
-            url = url + `?title=${text}`;
+            url = url + `?search=${text}`;
         }
         const result = await fetch(url, {
             method: "GET",

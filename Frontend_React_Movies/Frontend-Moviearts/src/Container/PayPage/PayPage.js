@@ -16,7 +16,7 @@ const PayPage = (props) => {
     const CreateRental = async() =>{
         let result = await APIConsumer.CreateRental(userId, movieIds);
         if(result){
-            localStorage.setItem('cart', []);
+            localStorage.setItem('cart', JSON.stringify([]));
         }
     };
     const getTotal = () =>{
