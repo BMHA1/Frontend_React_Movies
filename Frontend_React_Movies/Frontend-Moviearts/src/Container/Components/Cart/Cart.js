@@ -1,13 +1,13 @@
 import BubbleAlert from '../bubbleAlert/BubbleAlert';
 import Button from '../Button/Button';
-import CartDatails from '../CartDetails/CartDatails';
-import './Cart.scss'
+import CartDetails from '../CartDetails/CartDetails';
+import './Cart.scss';
 
 const Cart = (props) => {
 
-    const { cart, cartVisible, showCart} = props
+    const { cart, cartVisible, showCart} = props;
     
-    const cantidad = cart.reduce((acc, ele) => acc + 1, 0)
+    const cantidad = (cart ? cart.length : 0);
     
     return(
         <div>
@@ -19,10 +19,10 @@ const Cart = (props) => {
             <Button className='cart' onClick={showCart}>
                 Cesta
             </Button>
-            {cartVisible ? <CartDatails cart={cart}/> : null}
+            {cartVisible ? <CartDetails cart={cart}/> : null}
             
         </div>
     )
 };
 
-export default Cart
+export default Cart;

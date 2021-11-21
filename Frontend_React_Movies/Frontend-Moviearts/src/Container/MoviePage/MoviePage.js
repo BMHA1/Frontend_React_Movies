@@ -10,7 +10,7 @@ import { APIConsumer } from "../../services/APIConsumer";
 class MoviePage extends Component {
     state = {
         movies:[],
-        cart:[],
+        cart: JSON.parse(localStorage.getItem('cart')),
         cartVisible: false,
         text: null
     };
@@ -33,18 +33,17 @@ class MoviePage extends Component {
     };
 
     addToCart = (movie) =>{
-        const { cart } = this.state;
-        if(cart.find(x => x.title === movie.title)){ 
-            const newCart = cart.map(x => x.title === movie.title?({
-                ...x
-            }): x );
-            return this.setState({cart:newCart});
+        let cart = this.state.cart;
+        if(!cart) {
+            cart = [];
         }
-        return this.setState({
-            cart: this.state.cart.concat({
-                ...movie
-            })
-        });
+        if(!cart.find(x => x.title === movie.title)){
+            cart.push(movie);
+            this.setState({
+                cart: cart
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
     };
 
     showCart = () => {
