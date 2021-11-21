@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
+
 import UserCard from '../../Components/UserCard/UserCard'
 import './UserList.scss'
+
 
 const UsersList = () => {
 
