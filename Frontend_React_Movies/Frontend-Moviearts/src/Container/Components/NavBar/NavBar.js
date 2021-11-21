@@ -1,6 +1,7 @@
 import Logo from '../Logo/Logo';
 import './NavBar.scss';
 import Cart from '../Cart/Cart';
+// import Button from '../Button/Button';
 
 const NavBar = (props) => {
     const { cart, cartVisible, showCart} = props
@@ -12,6 +13,7 @@ const NavBar = (props) => {
             cartVisible={cartVisible}
             showCart={showCart}
             />
+             {/* <Button >Mis Pedidos</Button> */}
         </nav>
     )
 };

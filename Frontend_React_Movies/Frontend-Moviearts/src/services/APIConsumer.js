@@ -2,7 +2,7 @@
 export const APIConsumer = {
     getMovies: async (text) => {
         let movies;
-        let url = `http://localhost:9525/movies`;
+        let url = `http://localhost:4000/movies`;
         if (text) {
             url = url + `?search=${text}`;
         }
@@ -16,7 +16,7 @@ export const APIConsumer = {
 
     CreateRental: async (userId,moviesId) => {
         try {
-            let result = await fetch(`http://localhost:9525/rentals`, {
+            let result = await fetch(`http://localhost:4000/rentals`, {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json', 
@@ -47,7 +47,7 @@ export const APIConsumer = {
     
     loginUser: async (email, password) => {
         try {
-            let result = await fetch(`http://localhost:9525/users/login`, {
+            let result = await fetch(`http://localhost:4000/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
