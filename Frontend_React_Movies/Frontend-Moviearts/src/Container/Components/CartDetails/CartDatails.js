@@ -1,15 +1,18 @@
+import { useNavigate } from 'react-router';
 import Button from '../Button/Button';
 import './CartDetails.scss'
 
 const CartDatails = (props) => {
     const { cart } = props; 
     console.log(cart);
+    let navigate = useNavigate()
     return(
         <div className="cartDetails" >
             <ul className='ul'>
-                {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.precio}</span> </li> )}
-                <Button className="finalizePurchase" onClick={()=>console.log('vamos bien')}>finalize purchase</Button>
+                {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.price} BitCoin</span> </li> )}
             </ul>
+            <Button className="button buttonShop" onClick={()=>navigate('/login')}>finalize purchase</Button>
+
         </div>
     )
 };

@@ -2,13 +2,14 @@ import { Component } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import './MovieList.scss' ;
 class MovieList extends Component {
-    render(){
+    render(props){
         const { movies, addToCart } = this.props
         return(
             <div className='movieList'>
+
                 {movies.map(movie => <MovieCard
                 addToCart={addToCart}
-                key={movies.title}
+                key={movie._id}
                 movie={movie}
                 />)}
             </div>

@@ -5,58 +5,62 @@ import MovieList from "../Components/MovieList/MovieList";
 import NavBar from "../Components/NavBar/NavBar";
 import Search from "../Components/Search/Search";
 import Tittle from "../Components/Title/Tittle";
+import { APIConsumer } from "../../services/APIConsumer";
 
 class MoviePage extends Component {
-
-    
-    //esta es la importacion desde el servidor 
     state = {
-        movies:[
-            { title: 'Soy Leyenda', year: 2007, precio:10,   imagen:'../../../../public/productos/soy_leyenda.jpg'},
-            { title: 'Yo Robots', year: 2002, precio:6,  imagen:'../../../../public/productos/yo_robot.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'El Hombre Bicentenario', year: 2001, precio:3,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'Evangelion', year: 2001, precio:10,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-            { title: 'Iron Man', year: 2001, precio:15,  imagen:'../../../../public/productos/bicentenial_man.jpg'},
-        ],
+        movies:[],
         cart:[],
         cartVisible: false,
-    }
-    
-    handleGetData = (e) =>{
-        e.preventDefault()
-        console.log(e.target.value);
+        text: null
     };
 
-    findMovie = (movie) =>{
-        const { movies } = this.state
+    constructor(props){
+        super(props);
+        this.handleSearch = this.handleSearch.bind(this);
+    }
+    handleSearch = (e) =>{
+        e.preventDefault();
+        let text = e.target.value;
+        this.setState({text:text});
+        this.handleGetData(text);
     };
+
+    handleGetData = async (text) =>{
+        let result = await APIConsumer.getMovies(text);
+        console.log(result.movies);
+        this.setState({movies:result.movies});
+    };
+
     addToCart = (movie) =>{
-        const { cart } = this.state
+        const { cart } = this.state;
         if(cart.find(x => x.title === movie.title)){ 
             const newCart = cart.map(x => x.title === movie.title?({
                 ...x
-            }): x )
-            return this.setState({cart:newCart})
+            }): x );
+            return this.setState({cart:newCart});
         }
         return this.setState({
             cart: this.state.cart.concat({
-                ...movie,
-                cantida:1,
+                ...movie
             })
-        })
-    }
+        });
+    };
 
     showCart = () => {
         if (!this.state.cart.length) {
-            return
+            return;
         }
-        this.setState({cartVisible: !this.state.cartVisible})
+        this.setState({cartVisible: !this.state.cartVisible});
+    };
+
+    componentDidMount = () => {
+        this.handleGetData();
+        console.log('soy un didmount');
     }
 
     render(){
+        console.log('me he renderizado');
         const { cartVisible } = this.state
         return(
             <div >
@@ -69,7 +73,7 @@ class MoviePage extends Component {
                     <Tittle/>
                     <Search
                     className="search"
-                    {...props}
+                    handleSearch={this.handleSearch}
                     />
                     <MovieList
                         addToCart={this.addToCart}
