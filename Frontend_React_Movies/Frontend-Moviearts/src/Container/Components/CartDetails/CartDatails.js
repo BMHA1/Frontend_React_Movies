@@ -11,7 +11,7 @@ const CartDatails = (props) => {
             <ul className='ul'>
                 {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.price} BitCoin</span> </li> )}
             </ul>
-            <Button className="button buttonShop" onClick={()=>navigate('/login')}>finalize purchase</Button>
+            <Button className="button buttonShop" onClick={()=>navigate('/user/rental')}>finalize purchase</Button>
 
         </div>
     )
