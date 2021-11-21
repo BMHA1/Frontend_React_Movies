@@ -71,12 +71,12 @@ export const APIConsumer = {
             console.log(error)
         }
     },
-    getAllMovies: async () => {
+    getAllUsers: async () => {
         try {
-            const result = await fetch(`http://localhost:4000/movies`, {
+            const result = await fetch(`http://localhost:4000/users`, {
                 method: "GET"
             })
-
+            
             return await result.json()
 
         } catch (error) {

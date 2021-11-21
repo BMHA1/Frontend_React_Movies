@@ -1,10 +1,24 @@
-.button{
-    background-color: #0a283e;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    max-width: 100%;
-    margin: auto;
+.button {
+    height: 2.5em;
+    width: 8em;
+    border-radius: 50px;
+    margin-right: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    span {
+        color: #00f0b5;
+        mix-blend-mode: difference;
+    }
+
+    span::before {
+        border-radius: 50px;
+        width: 25%;
+        background: #00f0b5;
+    }
+    span:hover {
+        span::before {
+            background: #00f0b5;
+            width: 100%;
+        }
+    }
 }

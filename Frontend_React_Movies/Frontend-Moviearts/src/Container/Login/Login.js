@@ -1,27 +1,14 @@
-// import React, { useState, useEffect } from 'react';
-// import { NavLink } from "react-router-dom";
+
 import './Login.scss'
 import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.JPG"
-// import LayOut from '../Components/LayOut/LayOut';
+import Button from "../Components/Button/Button"
+
 
 const Login = (props) => {
 
-    // const [register, setRegister]= useState(false)
-
-    // const [tipoUsuario, setTipoUsuario] = useState(user)
-
-
-
-    //  useEffect(() => {
-    //     //  buscar el token
-    //     const rol = decode(token)
-    //     return () => {
-    //         // cleanup
-    //     }
-    // }, [register])
 
     let navigate = useNavigate()
 
@@ -60,8 +47,9 @@ const Login = (props) => {
     }
 
     return (
-      
+        <div>
             <div className="Profile">
+                <img className="Logo" src={logo} alt="logo" />
                 <form onSubmit={(e) => handleSendData(e)}>
                     <legend>¿Preparado para vivir una experiencia?</legend>
                     <div className='formulario'>
@@ -84,15 +72,14 @@ const Login = (props) => {
                             </label>
                         </div>
                     </div>
-
-                    {/* {register && <Registro />} */}
-
-                    <button className="buttonEntrar" type="onSubmit"  > <span>  Entrar </span></button>
-                    <button onClick={() => redirection()} > <span> Registrarte </span> </button>
+                    <div className="content-button">
+                        <Button className="buttonEntrar" type="onSubmit" ><span> Entrar </span></Button>
+                        <Button onClick={() => redirection()} ><span> Registrarte </span></Button>
+                    </div>
                 </form>
-                <img className="Logo" src={logo} />
+
             </div>
-      
+        </div>
     )
 }
 export default Login

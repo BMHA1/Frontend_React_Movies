@@ -4,10 +4,14 @@ import UsersList from "../Components/UsersList/UsersList";
 import Button from "../Components/Button/Button";
 import './ProfileAdmin.scss'
 
-const ProfileAdmin = (props) => {
+const ProfileAdmin = () => {
 
     // const [CreateUser, setCreateUser] = useEffect(true)
     // const [ListUsers, setListUser] = useEffect(false)
+
+    const handLechangeenvets = () => {
+
+    }
 
     return (
         <>
@@ -19,13 +23,13 @@ const ProfileAdmin = (props) => {
                             <Button>CreateAdmin</Button>
                         </li>
                         <li >
-                        <Button>ListUsers</Button>
+                            <Button >ListUsers</Button>
                         </li>
                     </ul>
                 </div>
             </nav>
             <div><UsersList/></div>
-            
+
         </>
     )
 }
