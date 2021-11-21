@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import UserCard from '../../Components/UserCard/UserCard'
-
-
-
+import './UserList.scss'
+import Title from '../Title/Tittle'
 
 const UsersList = () => {
 
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState([true])
-    const [error, setError] = useState([false])
+    const [error, setError] = useState(false)
 
     const getUsers = () => {
         console.log('hola')
@@ -33,15 +32,16 @@ const UsersList = () => {
 
     return (
         <>
+            <Title> </Title >
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
-            {<h1> list de usuario</h1>}
-            <div classname="usersList">
+            <div className="usersList">
                 {users.map((user) => {
                     return (
                         <UserCard
-                            key={user._id}
-                            name={user.name} surname={user.email}
+                            id={user._id}
+                            name={user.name} surname={user.surname}
+                            role={user.role}
                             email={user.email} />
                     )
                 })}

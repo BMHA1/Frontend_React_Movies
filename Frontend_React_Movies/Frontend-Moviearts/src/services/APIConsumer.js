@@ -76,7 +76,24 @@ export const APIConsumer = {
             const result = await fetch(`http://localhost:4000/users`, {
                 method: "GET"
             })
-            
+
+            return await result.json()
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    getAllRentals: async () => {
+        try {
+            const result = await fetch(`http://localhost:4000/rentals`, {
+                headers: {
+                    "content-type": "application/json",
+                    Token: "Bearer" + localStorage.getItem("token")
+                },
+                method: "GET"
+            })
+
             return await result.json()
 
         } catch (error) {
