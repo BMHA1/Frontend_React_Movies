@@ -24,7 +24,7 @@ const UsersList = () => {
                 setError(true)
                 setLoading(false)
             }
-        })
+        }, 5000)
     }
 
     useEffect(() => {
@@ -33,15 +33,19 @@ const UsersList = () => {
 
     return (
         <>
-            {console.log(users)}
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
             {<h1> list de usuario</h1>}
-            {users.map((user) => {
-                return (
-                    <UserCard name={user.name} email={user.email} email={user.email} />
-                )
-            })}
+            <div classname="usersList">
+                {users.map((user) => {
+                    return (
+                        <UserCard
+                            key={user._id}
+                            name={user.name} surname={user.email}
+                            email={user.email} />
+                    )
+                })}
+            </div>
         </>
     )
 

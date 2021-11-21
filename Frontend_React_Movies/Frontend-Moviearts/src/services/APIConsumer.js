@@ -33,7 +33,7 @@ export const APIConsumer = {
     },
     CreateUser: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/usuario/login`, {
+            let result = await fetch(`http://localhost:4000/users`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -53,7 +53,7 @@ export const APIConsumer = {
     },
     CreateAdmin: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/user/login`, {
+            let result = await fetch(`http://localhost:4000/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

@@ -20,15 +20,18 @@ const ProfileAdmin = () => {
                     {/* <a href="#" class="brand-logo">Logo</a> */}
                     <ul className=" ul">
                         <li >
-                            <Button>CreateAdmin</Button>
+                            <Button>Create Admin</Button>
                         </li>
                         <li >
-                            <Button >ListUsers</Button>
+                            <Button >List Users</Button>
+                        </li>
+                        <li >
+                            <Button >List Rentals</Button>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <div><UsersList/></div>
+            <div><UsersList /></div>
 
         </>
     )

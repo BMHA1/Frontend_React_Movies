@@ -52,7 +52,7 @@ const Login = (props) => {
                 <img className="Logo" src={logo} alt="logo" />
                 <form onSubmit={(e) => handleSendData(e)}>
                     <legend>¿Preparado para vivir una experiencia?</legend>
-                    <div className='formulario'>
+                    <div className='imput'>
                         <div className="float-right">
                             <label>
                                 <input
@@ -73,11 +73,10 @@ const Login = (props) => {
                         </div>
                     </div>
                     <div className="content-button">
-                        <Button className="buttonEntrar" type="onSubmit" ><span> Entrar </span></Button>
+                        <Button type="onSubmit" ><span> Entrar </span></Button>
                         <Button onClick={() => redirection()} ><span> Registrarte </span></Button>
                     </div>
                 </form>
-
             </div>
         </div>
     )
