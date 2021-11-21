@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import UserCard from '../../Components/UserCard/UserCard'
 import './UserList.scss'
-import Title from '../Title/Tittle'
 
 const UsersList = () => {
 
@@ -32,7 +31,7 @@ const UsersList = () => {
 
     return (
         <>
-            <Title> </Title >
+
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
             <div className="usersList">

@@ -1,4 +1,7 @@
 import { APIConsumer } from '../../../services/APIConsumer';
+import { APIConsumer } from '../../../services/APIConsumer';
+import RentalsCard from '../../Components/RentalsCard/RentalsCard'
+import './UserList.scss'
 
 
 
@@ -31,16 +34,18 @@ const RentalList = () => {
     }, [])
 
     return (
-        <> <Title> </Title >
+        <>
+
             {error && <h1>¡I'm sorry, something has happened!</h1>}
             {loading && <h1>Loading...</h1>}
             <div className="rentalsList">
                 {rentals.map((rentals) => {
                     return (
-                        <rentalsCard
+                        <RentalsCard
                             id={rentals._id}
                             name={rentals.name} surname={rentals.surname}
-                            role={rentals.role}
+                            title={rentals.title}
+                            totalPrice={rentals.totalPrice}
                             email={rentals.email} />
                     )
                 })}
@@ -50,3 +55,4 @@ const RentalList = () => {
     )
 
 }
+export default RentalList

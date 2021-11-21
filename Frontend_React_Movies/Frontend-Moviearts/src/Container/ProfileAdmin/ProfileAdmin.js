@@ -1,6 +1,7 @@
 // import { useEffect } from "react";
 // import { NavLink } from "react-router-dom";
 import UsersList from "../Components/UsersList/UsersList";
+import RentalList from "../Components/RentalsList/RentalsList";
 import Button from "../Components/Button/Button";
 import './ProfileAdmin.scss'
 
@@ -31,7 +32,9 @@ const ProfileAdmin = () => {
                     </ul>
                 </div>
             </nav>
-            <div><UsersList /></div>
+            {/* <div><UsersList /></div> */}
+            <div><RentalList /></div>
+
 
         </>
     )
