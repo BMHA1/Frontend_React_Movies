@@ -6,6 +6,7 @@ import ProfileAdmin from "./Container/ProfileAdmin/ProfileAdmin"
 import CreateUser from "./Container/CreateUser/CreateUser";
 import UsersList from "./Container/Components/UsersList/UsersList";
 import MoviePage from "./Container/MoviePage/MoviePage";
+import PayPage from "./Container/PayPage/PayPage";
 
 
 function App() {
@@ -17,10 +18,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} exact />
           <Route path="/register" element={<CreateUser />} exact />
-          <Route path="/moviepage" element={<MoviePage />} exact />
+          <Route path="/moviepage" element={<MoviePage/>} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin />} exact />
           <Route path="/UsersList" element={<UsersList />} exact />
-
+          <Route path="/cart" element={<PayPage/>} exact/>
         </Routes>
       </BrowserRouter>
 
