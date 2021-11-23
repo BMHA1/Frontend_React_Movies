@@ -3,14 +3,25 @@
 En este proyecto de geekhub nos han pedido realizar un frontend en base a un proyecto pasado con tecnología react.
 Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 
-1. Tecnologías utilizadas
-2. Arquitectura Frontend
-3. Contenedores
-4. Componentes
-5. Instalación
-6. Utilización
+- [Tecnologías utilizadas](#1.Tecnologías-&-Frameworks)
+- [Arquitectura Frontend](#2.Arquitectura-Frontend)
+- [Contenedores](#3.Contenedores)
+- [Componentes](#4.Componentes)
+- [Instalación](#5.Instalación)
+- [Utilización](#6.Utilización)
+- [Learn More](#Learn-More)
 
-## 1. Tecnologías & Frameworks
+```
+| DEPENDECIA       | VERSION |
+| -----------------|---------|
+| Jwt-decode       | 3.1.2   |
+| Node-sass        | 6.0.1   |
+| React            | 17.0.2  |
+| React-dom        | 17.0.2  |
+| React-router-dom | 6.0.2   |
+```
+
+## 1.Tecnologías & Frameworks
 
 Las dependencias de este proyecto :
 
@@ -20,7 +31,7 @@ Las dependencias de este proyecto :
 ![](https://imagizer.imageshack.com/v2/64x64q90/922/mZxBj9.png)
 
 
-## 2. Arquitectura Frontend
+## 2.Arquitectura Frontend
 
 ```
           ├───SRC
@@ -54,7 +65,7 @@ Las dependencias de este proyecto :
             └───Package.json
 ```
 
-## 3. Contenedores
+## 3.Contenedores
 En este ejemplo estamos viendo el contenedor PayPage.
 El cual implementamos la esctrura funcional de componentes.
 
@@ -92,8 +103,9 @@ const PayPage = (props) => {
     );
 };
 ```
-## 4. Componentes
+## 4.Componentes
 En este ejemplo pondremos el componente CartDetails y su funcionamiento.
+Un componente en React es un elemento independiente y reeutilizable. Además existen dos tipos de componentes en React: Componentes funcionales: Solo tienen propiedades. Componentes de clase: Tienen propiedades, ciclos de vida y propiedades.
 
 ```
 const CartDetails = (props) => {
@@ -119,16 +131,19 @@ Para empezar a usar el proyecto necesitaremos  instalar las dependencias.
 esto lo haremos con un npm install.
 
 ## Utilización
-Para levantar el servidor react utilizamos "npm start".
-Se ejecuta desde la carpeta raiz del proyecto.
+La aplicacion se ejecuta en el modo de desarrollo. \
+Abrimos a traves del comando `npm start` [http: // localhost: 3000] (http: // localhost: 3000) para verlo en el navegador.
 
-## Dependencias 
-| DEPENDECIA |VERSION |
-| -------------| ------ |
-| Jwt-decode   | 3.1.2 |
-| Node-sass    | 6.0.1 |
-| React        | 17.0.2 |
-| React-dom    |  17.0.2|
-| React-router-dom | 6.0.2 |
+La página se recargará si realiza modificaciones. \
+También verá cualquier error en la consola.
+
+## Learn More
+
+Para mas informacion -> [Crear react documentacion](https://facebook.github.io/create-react-app/docs/getting-started).
+
+Para aprender react,  [React documentacion](https://reactjs.org/).
 ## License
 [BMS](BMS)
+
+
+
