@@ -136,7 +136,25 @@ export const APIConsumer = {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token')
                 },
-                method: "GET"
+                method: "GET" 
+            })
+            console.log(result)
+            return await result.json()
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    deleteRentals: async (id) => {
+        
+        try {
+            const result = await fetch(`http://localhost:4000/rentals/delete/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                method: "POST"
             })
             console.log(result)
             return await result.json()
