@@ -12,10 +12,10 @@ const CartDetails = (props) => {
     return(
         <div className="cartDetails" >
             <ul className='ul'>
-                {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.price} BitCoin</span> </li> )}
+                {cart.map(x => <li key={x.title} className='movie'> {x.title} <span>{x.price} $</span> </li> )}
             </ul>
+            <p className="total">total: {getTotal()} $ </p>
             <Button className="button buttonShop" onClick={()=>navigate('/cart')}>finalize purchase</Button>
-            <p>total: {getTotal()}</p>
         </div>
     )
 };

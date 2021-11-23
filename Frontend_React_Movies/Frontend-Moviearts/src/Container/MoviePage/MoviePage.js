@@ -80,9 +80,6 @@ class MoviePage extends Component {
                         addToCart={this.addToCart}
                         movies={this.state.movies}
                     />
-                    <div className="boton-pedidos">
-                   
-                   </div>
                 </LayOut>
             </div>
         )

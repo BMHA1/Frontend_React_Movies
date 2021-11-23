@@ -2,7 +2,7 @@
 export const APIConsumer = {
     getMovies: async (text) => {
         let movies;
-        let url = `http://localhost:4000/movies`;
+        let url = `http://localhost:9525/movies`;
         if (text) {
             url = url + `?search=${text}`;
         }
@@ -16,7 +16,7 @@ export const APIConsumer = {
 
     CreateRental: async (userId, moviesId) => {
         try {
-            let result = await fetch(`http://localhost:4000/rentals`, {
+            let result = await fetch(`http://localhost:9525/rentals`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const APIConsumer = {
 
     loginUser: async (email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/users/login`, {
+            let result = await fetch(`http://localhost:9525/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -59,7 +59,7 @@ export const APIConsumer = {
 
     CreateUser: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/users`, {
+            let result = await fetch(`http://localhost:9525/users`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -79,7 +79,7 @@ export const APIConsumer = {
     },
     CreateAdmin: async (name, surname, email, password) => {
         try {
-            let result = await fetch(`http://localhost:4000/users/login`, {
+            let result = await fetch(`http://localhost:9525/users/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -100,7 +100,7 @@ export const APIConsumer = {
 
     getAllUsers: async () => {
         try {
-            const result = await fetch(`http://localhost:4000/users`, {
+            const result = await fetch(`http://localhost:9525/users`, {
                 method: "GET"
             })
 
@@ -115,7 +115,7 @@ export const APIConsumer = {
         console.log(localStorage.getItem("token"))
 
         try {
-            const result = await fetch(`http://localhost:4000/rentals`, {
+            const result = await fetch(`http://localhost:9525/rentals`, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token')
                 },
@@ -132,7 +132,7 @@ export const APIConsumer = {
         
 
         try {
-            const result = await fetch(`http://localhost:4000/rentals/${id}`, {
+            const result = await fetch(`http://localhost:9525/rentals/${id}`, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token')
                 },
@@ -149,7 +149,7 @@ export const APIConsumer = {
     deleteRentals: async (id) => {
         
         try {
-            const result = await fetch(`http://localhost:4000/rentals/delete/${id}`, {
+            const result = await fetch(`http://localhost:9525/rentals/delete/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     "Authorization": "Bearer " + localStorage.getItem('token')

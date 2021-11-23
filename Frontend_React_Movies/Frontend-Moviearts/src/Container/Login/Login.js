@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.JPG"
 import Button from "../Components/Button/Button"
+import Title from "../Components/Title/Tittle"
 
 
 
@@ -52,7 +53,7 @@ const Login = (props) => {
             <div className="Profile">
                 <img className="Logo-ideal" src={logo} alt="logo" />
                 <form onSubmit={(e) => handleSendData(e)}>
-                    <legend>¿Preparado para vivir una experiencia?</legend>
+                    <Title/>
                     <div className='imput'>
                         <div className="float-right">
                             <label>
@@ -74,7 +75,7 @@ const Login = (props) => {
                         </div>
                     </div>
                     <div className="content-button">
-                        <Button type="onSubmit" ><span> Entrar </span></Button>
+                        <Button type="onSubmit" className="buton-entrar"><span> Entrar </span></Button>
                         <Button onClick={() => redirection()} ><span> Registrarte </span></Button>
                     </div>
                 </form>
