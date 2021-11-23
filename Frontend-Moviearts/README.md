@@ -122,5 +122,13 @@ esto lo haremos con un npm install.
 Para levantar el servidor react utilizamos "npm start".
 Se ejecuta desde la carpeta raiz del proyecto.
 
+## Dependencias 
+| DEPENDECIA |VERSION |
+| -------------| ------ |
+| Jwt-decode   | 3.1.2 |
+| Node-sass    | 6.0.1 |
+| React        | 17.0.2 |
+| React-dom    |  17.0.2|
+| React-router-dom | 6.0.2 |
 ## License
 [BMS](BMS)
