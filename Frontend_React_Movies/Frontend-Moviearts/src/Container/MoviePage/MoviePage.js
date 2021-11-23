@@ -7,6 +7,7 @@ import Search from "../Components/Search/Search";
 import Tittle from "../Components/Title/Tittle";
 import { APIConsumer } from "../../services/APIConsumer";
 
+
 class MoviePage extends Component {
     state = {
         movies:[],
@@ -57,9 +58,10 @@ class MoviePage extends Component {
         this.handleGetData();
         console.log('soy un didmount');
     }
+    
 
     render(){
-        console.log('me he renderizado');
+        
         const { cartVisible } = this.state
         return(
             <div >
@@ -78,6 +80,9 @@ class MoviePage extends Component {
                         addToCart={this.addToCart}
                         movies={this.state.movies}
                     />
+                    <div className="boton-pedidos">
+                   
+                   </div>
                 </LayOut>
             </div>
         )

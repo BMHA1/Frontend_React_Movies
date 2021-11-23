@@ -4,7 +4,6 @@ import { APIConsumer } from "../../services/APIConsumer"
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import logo from "./logo.JPG"
-
 import Button from "../Components/Button/Button"
 
 
@@ -37,22 +36,21 @@ const Login = (props) => {
         console.log(jtw);
         localStorage.setItem("user", JSON.stringify(jtw));
         if (jtw && jtw.role === "user") {
-            navigate('/profileUser')
+            navigate('/homepage')
         } else {
             navigate('/profileAdmin')
         }
     }
 
-    
+
     const redirection = () => {
         navigate("/register")
     }
 
     return (
-
-        <div>
+        <div className="Padre">
             <div className="Profile">
-                <img className="Logo" src={logo} alt="logo" />
+                <img className="Logo-ideal" src={logo} alt="logo" />
                 <form onSubmit={(e) => handleSendData(e)}>
                     <legend>¿Preparado para vivir una experiencia?</legend>
                     <div className='imput'>

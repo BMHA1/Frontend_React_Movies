@@ -1,12 +1,11 @@
-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.Padre {
     .Profile {
-      
-        img {
-           
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .Logo-ideal {
             height: 20em;
             width: 20em;
             border-radius: 100em;
@@ -17,17 +16,17 @@ div {
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 2em;
             }
-            // .imput{
-            //    input{
-            //        border-radius: 20% ;
-            //        height: 2em;
-            //    }
-            // }
+            .imput{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
         }
-        .content-button{
-            display: flexbox;
+        .content-button {
+            display:flex;
             flex-direction: row;
-            border: 1px red solid;
+            padding: 2em;
         }
     }
 }

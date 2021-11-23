@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
-
+import Loading from "../Loading/Loading"
 import UserCard from '../../Components/UserCard/UserCard'
 import './UserList.scss'
 
@@ -35,7 +35,7 @@ const UsersList = () => {
         <>
 
             {error && <h1>¡I'm sorry, something has happened!</h1>}
-            {loading && <h1>Loading...</h1>}
+            {loading && <Loading/>}
             <div className="usersList">
                 {users.map((user) => {
                     return (
