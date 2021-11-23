@@ -6,8 +6,9 @@
         flex-direction: column;
 
         .Logo-ideal {
-            height: 20em;
-            width: 20em;
+            height: 15em;
+            width: 15em;
+            margin-top: .5em;
             border-radius: 100em;
             border: 0.2em black solid;
         }
@@ -26,7 +27,20 @@
         .content-button {
             display:flex;
             flex-direction: row;
+            justify-content: center;
             padding: 2em;
+            margin-left: 2px;
+            .buton-entrar{
+                padding: 0 20px;
+                background-color: #0A283E;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                max-width: 100%;
+                margin-right: 1.5em;
+                height: 2.5em;
+            }
         }
     }
 }

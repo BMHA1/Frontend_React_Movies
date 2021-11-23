@@ -1,0 +1,28 @@
+.logo-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    justify-content: center;
+    position: relative;
+    padding: 0 50px;
+    box-shadow: 0 2px 3px rgba($color: #000000, $alpha: .1);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    line-height: 30px;
+    .legend{
+        font-weight: bold;
+        font-style: italic;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
+input{
+    border-radius: 12px;
+    width: 219px;
+    padding: 4px;
+    margin-bottom: 10px;
+}

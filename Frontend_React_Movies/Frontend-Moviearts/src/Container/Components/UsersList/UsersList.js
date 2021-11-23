@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { APIConsumer } from '../../../services/APIConsumer';
 import Loading from "../Loading/Loading"
-import UserCard from '../../Components/UserCard/UserCard'
+import UserCard from '../userCard/UserCard'
 import './UserList.scss'
 
 

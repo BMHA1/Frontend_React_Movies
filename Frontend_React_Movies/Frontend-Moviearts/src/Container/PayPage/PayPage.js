@@ -7,19 +7,21 @@ import Tittle from "../Components/Title/Tittle";
 
 
 const PayPage = (props) => {
+
     const movies = JSON.parse(localStorage.getItem('cart'));
     const movieIds = movies.map((e) => e._id);
+    
     const user = JSON.parse(localStorage.getItem('user'));
     let userId = user._id;
-    console.log(userId);
-    const navigate = useNavigate
+    
+    const navigate = useNavigate()
     const CreateRental = async () => {
         let result = await APIConsumer.CreateRental(userId, movieIds);
         if (result) {
             localStorage.setItem('cart', JSON.stringify([]));
             setTimeout(() => {
-                navigate('/moviepage')
-            }, 3000)
+                navigate('/homepage')
+            }, 2000)
         }
     };
     const getTotal = () => {

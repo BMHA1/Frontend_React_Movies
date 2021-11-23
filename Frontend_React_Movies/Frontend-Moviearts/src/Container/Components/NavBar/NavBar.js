@@ -17,12 +17,14 @@ const NavBar = (props) => {
     return (
         <nav className='navBar'>
             <Logo />
+            <div className="perfil">
+            <Button onClick={()=> navigateMi()}>Mis pedidos</Button>
             <Cart
                 cart={cart}
                 cartVisible={cartVisible}
                 showCart={showCart}
             />
-            <Button onClick={()=> navigateMi()}>Mis pedidos</Button>
+            </div>
         </nav>
     )
 };
