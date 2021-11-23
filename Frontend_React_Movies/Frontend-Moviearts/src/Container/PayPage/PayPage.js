@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { APIConsumer } from "../../services/APIConsumer";
 import Button from "../Components/Button/Button";
 import LayOut from "../Components/LayOut/LayOut";
@@ -11,12 +12,14 @@ const PayPage = (props) => {
     const user = JSON.parse(localStorage.getItem('user'));
     let userId = user._id;
     console.log(userId);
-    console.log(movieIds);
-
+    const navigate=useNavigate
     const CreateRental = async() =>{
         let result = await APIConsumer.CreateRental(userId, movieIds);
         if(result){
             localStorage.setItem('cart', JSON.stringify([]));
+            setTimeout(()=>{
+                navigate('/moviepage')
+            },3000)
         }
     };
     const getTotal = () =>{

@@ -6,8 +6,7 @@ import NavBar from "../Components/NavBar/NavBar";
 import Search from "../Components/Search/Search";
 import Tittle from "../Components/Title/Tittle";
 import { APIConsumer } from "../../services/APIConsumer";
-import Button from "../Components/Button/Button";
-import { useNavigate } from 'react-router-dom'
+
 
 class MoviePage extends Component {
     state = {
@@ -59,10 +58,7 @@ class MoviePage extends Component {
         this.handleGetData();
         console.log('soy un didmount');
     }
-    ListRentals=()=>{
-        const navigate=useNavigate
-        navigate('/myrentals')
-    }
+    
 
     render(){
         
@@ -85,7 +81,7 @@ class MoviePage extends Component {
                         movies={this.state.movies}
                     />
                     <div className="boton-pedidos">
-                   <Button onClick={(e)=>ListRentals()}>Mis pedidos</Button>
+                   
                    </div>
                 </LayOut>
             </div>

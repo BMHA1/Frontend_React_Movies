@@ -1,6 +1,5 @@
 import './RentalsCard.scss'
-
-
+import MovieCard from '../MovieCard/MovieCard'
 
 const RentalCard= (props) => {
 console.log(props.title)
@@ -13,6 +12,12 @@ console.log(props.title)
                 <span>Collection:{props.title}</span>
                 <span> Price Total: {props.totalPrice}$</span>
                 <span> Email: {props.email}</span>
+                <span>Movies in rental: </span>
+                <select> Movies
+                    {props.movies.map((movie) => {
+                        return <option>{movie.title}</option>
+                    })}
+                </select>    
             </div>
         </>
     )

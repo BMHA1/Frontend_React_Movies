@@ -23,12 +23,19 @@ const ProfileAdmin = () => {
     return (
         <>
             <nav className="Navegador">
+               
                 <div class="nav-wrapper">
                 <Logo/>
                     <ul className=" ul">
                         <li >
                             <Button onClick={() => showlistUser()}>List Users</Button>
                         </li>
+                        {/* {/* <li >
+                            <Button onClick={() => showlistUser()}>List Users</Button>
+                        </li> */}
+                        <li >
+                            <Button onClick={() => showlistUser()}>List Users</Button>
+                        </li> 
                         <li >
                             <Button onClick={() => showlistRentals()}>List Rentals</Button>
                         </li>

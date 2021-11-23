@@ -8,22 +8,22 @@ export const APIConsumer = {
         }
         const result = await fetch(url, {
             method: "GET",
-            headers:{"Authorization" : "Bearer " + localStorage.getItem('token')}
+            headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
         })
         movies = await result.json();
         return movies;
     },
 
-    CreateRental: async (userId,moviesId) => {
+    CreateRental: async (userId, moviesId) => {
         try {
             let result = await fetch(`http://localhost:4000/rentals`, {
                 method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json', 
-                    "Authorization" : "Bearer " + localStorage.getItem('token')
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + localStorage.getItem('token')
                 },
                 body: JSON.stringify({
-                    "movieId":moviesId,
+                    "movieId": moviesId,
                     "userId": userId
                 })
             })
@@ -35,16 +35,8 @@ export const APIConsumer = {
         }
     },
 
-    saveMovie: async (movie) => {
-        const result = await fetch(`http://apimobiedb.com/movies`, {
-            method: "POST",
-            body: {
-                movie
-            }
-        })
-        return result
-    },
     
+
     loginUser: async (email, password) => {
         try {
             let result = await fetch(`http://localhost:4000/users/login`, {
@@ -55,10 +47,10 @@ export const APIConsumer = {
                     "password": password
                 })
             })
-            
+
             const token = await result.json();
             console.log(token);
-            return token 
+            return token
         } catch (error) {
 
             console.log(error)
@@ -125,8 +117,24 @@ export const APIConsumer = {
         try {
             const result = await fetch(`http://localhost:4000/rentals`, {
                 headers: {
-                    "content-type": "application/json",
-                    // Authorization:  localStorage.getItem("token")
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                method: "GET"
+            })
+            console.log(result)
+            return await result.json()
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    getAllRentalsId: async (id) => {
+        
+
+        try {
+            const result = await fetch(`http://localhost:4000/rentals/${id}`, {
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
                 },
                 method: "GET"
             })

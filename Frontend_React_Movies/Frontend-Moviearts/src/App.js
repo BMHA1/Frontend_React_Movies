@@ -7,6 +7,7 @@ import CreateUser from "./Container/CreateUser/CreateUser";
 import UsersList from "./Container/Components/UsersList/UsersList";
 import MoviePage from "./Container/MoviePage/MoviePage";
 import PayPage from "./Container/PayPage/PayPage";
+import Myrentals from "./Container/Myrentals/Myrentals"
 
 
 function App() {
@@ -18,11 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} exact />
           <Route path="/register" element={<CreateUser />} exact />
-          <Route path="/homepage" element={<MoviePage/>} exact />
-          <Route path="/myrentals" element={<MoviePage/>} exact />
+          <Route path="/homepage" element={<MoviePage />} exact />
+          <Route path="/myrentals" element={<Myrentals/>} exact />
           <Route path="/profileAdmin" element={<ProfileAdmin />} exact />
           <Route path="/UsersList" element={<UsersList />} exact />
-          <Route path="/cart" element={<PayPage/>} exact/>
+          <Route path="/cart" element={<PayPage />} exact />
         </Routes>
       </BrowserRouter>
 
