@@ -1,0 +1,13 @@
+.centrado {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50%;
+    .imgLoading {
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        padding: 0;
+        border-radius: 100em;
+        margin-bottom: 0.5em;
+    }
+}
