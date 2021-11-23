@@ -21,7 +21,7 @@ Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 | React-router-dom | 6.0.2   |
 ```
 
-## 1.Tecnologías & Frameworks
+### 1.Tecnologías & Frameworks
 
 Las dependencias de este proyecto :
 
@@ -31,7 +31,7 @@ Las dependencias de este proyecto :
 ![](https://imagizer.imageshack.com/v2/64x64q90/922/mZxBj9.png)
 
 
-## 2.Arquitectura Frontend
+### 2.Arquitectura Frontend
 
 ```
           ├───SRC
@@ -65,7 +65,7 @@ Las dependencias de este proyecto :
             └───Package.json
 ```
 
-## 3.Contenedores
+### 3.Contenedores
 En este ejemplo estamos viendo el contenedor PayPage.
 El cual implementamos la esctrura funcional de componentes.
 
@@ -103,7 +103,7 @@ const PayPage = (props) => {
     );
 };
 ```
-## 4.Componentes
+### 4.Componentes
 En este ejemplo pondremos el componente CartDetails y su funcionamiento.
 Un componente en React es un elemento independiente y reeutilizable. Además existen dos tipos de componentes en React: Componentes funcionales: Solo tienen propiedades. Componentes de clase: Tienen propiedades, ciclos de vida y propiedades.
 
@@ -126,7 +126,7 @@ const CartDetails = (props) => {
     )
 };
 ```
-## Instalación
+### Instalación
 Para empezar a usar el proyecto necesitaremos  instalar las dependencias.
 esto lo haremos con un npm install.
 
@@ -137,12 +137,12 @@ Abrimos a traves del comando `npm start` [http: // localhost: 3000] (http: // lo
 La página se recargará si realiza modificaciones. \
 También verá cualquier error en la consola.
 
-## Learn More
+### Learn More
 
 Para mas informacion -> [Crear react documentacion](https://facebook.github.io/create-react-app/docs/getting-started).
 
 Para aprender react,  [React documentacion](https://reactjs.org/).
-## License
+### License
 [BMS](BMS)
 
 
