@@ -29,6 +29,8 @@ const PayPage = (props) => {
         <div>
 
             <Logo />
+            <span className='Nombre'>Nombre : {user.name}</span><br/>
+            <span className='Apellido'>Apellido : {user.surname}</span>
             <LayOut>
                 <Tittle />
             </LayOut>

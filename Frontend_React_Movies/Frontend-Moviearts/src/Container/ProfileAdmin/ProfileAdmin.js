@@ -40,6 +40,7 @@ const ProfileAdmin = () => {
                             <li >
                                 <Button onClick={() => showlistRentals()}>List Rentals</Button>
                             </li>
+                          
                         </ul>
                     </div>
                 </div>
