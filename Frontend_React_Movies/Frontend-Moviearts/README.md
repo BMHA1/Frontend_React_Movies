@@ -11,7 +11,7 @@ Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 - [Utilización](#6.Utilización)
 - [Learn More](#Learn-More)
 
-```
+
 | DEPENDECIA       | VERSION |
 | -----------------|---------|
 | Jwt-decode       | 3.1.2   |
@@ -19,7 +19,7 @@ Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 | React            | 17.0.2  |
 | React-dom        | 17.0.2  |
 | React-router-dom | 6.0.2   |
-```
+
 
 ### 1.Tecnologías & Frameworks
 
