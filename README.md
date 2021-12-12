@@ -11,7 +11,18 @@ Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 - [Utilización](#6.Utilización)
 - [Learn More](#Learn-More)
 
+
+
+
+### 1.Tecnologías & Frameworks
+
+
+![](https://imagizer.imageshack.com/v2/64x64q90/924/agCMk6.png)
+![](https://imagizer.imageshack.com/v2/64x21q90/923/kHm8gf.png)
+![](https://imagizer.imageshack.com/v2/64x64q90/922/mZxBj9.png)
+
 ```
+Las dependencias de este proyecto :
 | DEPENDECIA       | VERSION |
 | -----------------|---------|
 | Jwt-decode       | 3.1.2   |
@@ -20,16 +31,6 @@ Teniendo en cuenta , un backend ajeno a el equipo en Mongoose DB.
 | React-dom        | 17.0.2  |
 | React-router-dom | 6.0.2   |
 ```
-
-### 1.Tecnologías & Frameworks
-
-Las dependencias de este proyecto :
-
-
-![](https://imagizer.imageshack.com/v2/64x64q90/924/agCMk6.png)
-![](https://imagizer.imageshack.com/v2/64x21q90/923/kHm8gf.png)
-![](https://imagizer.imageshack.com/v2/64x64q90/922/mZxBj9.png)
-
 
 ### 2.Arquitectura Frontend
 
