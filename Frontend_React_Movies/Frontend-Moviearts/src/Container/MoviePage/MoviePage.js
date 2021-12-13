@@ -20,6 +20,7 @@ class MoviePage extends Component {
         super(props);
         this.handleSearch = this.handleSearch.bind(this);
     }
+    
     handleSearch = (e) =>{
         e.preventDefault();
         let text = e.target.value;
